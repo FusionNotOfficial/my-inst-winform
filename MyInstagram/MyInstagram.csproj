@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="RoundPictureBox.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="guna.ui2.winforms" Version="2.0.4.5" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
 

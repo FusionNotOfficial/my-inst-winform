@@ -1,7 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="Direct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="directMessage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Homepage.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Messenger.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Sign.cs">

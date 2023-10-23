@@ -30,12 +30,13 @@
         {
             label1 = new Label();
             label2 = new Label();
-            ulTextBox1 = new ULControls.ULTextBox();
+            usernameText = new ULControls.ULTextBox();
             label3 = new Label();
             passwordText = new ULControls.ULTextBox();
             passwordCheck = new CheckBox();
             loginBtn = new ULControls.ULButton();
             Sign = new Label();
+            passwordError = new Label();
             SuspendLayout();
             // 
             // label1
@@ -58,23 +59,23 @@
             label2.TabIndex = 0;
             label2.Text = "Username";
             // 
-            // ulTextBox1
+            // usernameText
             // 
-            ulTextBox1.BackColor = SystemColors.Window;
-            ulTextBox1.BorderColor = Color.MediumSlateBlue;
-            ulTextBox1.BorderFocusColor = Color.HotPink;
-            ulTextBox1.BorderSize = 2;
-            ulTextBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            ulTextBox1.ForeColor = Color.DimGray;
-            ulTextBox1.Location = new Point(31, 132);
-            ulTextBox1.Multiline = false;
-            ulTextBox1.Name = "ulTextBox1";
-            ulTextBox1.Padding = new Padding(7);
-            ulTextBox1.PasswordChar = false;
-            ulTextBox1.Size = new Size(225, 30);
-            ulTextBox1.TabIndex = 1;
-            ulTextBox1.Texts = "";
-            ulTextBox1.UnderlinedStyle = true;
+            usernameText.BackColor = SystemColors.Window;
+            usernameText.BorderColor = Color.MediumSlateBlue;
+            usernameText.BorderFocusColor = Color.HotPink;
+            usernameText.BorderSize = 2;
+            usernameText.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            usernameText.ForeColor = Color.DimGray;
+            usernameText.Location = new Point(31, 132);
+            usernameText.Multiline = false;
+            usernameText.Name = "usernameText";
+            usernameText.Padding = new Padding(7);
+            usernameText.PasswordChar = false;
+            usernameText.Size = new Size(225, 30);
+            usernameText.TabIndex = 1;
+            usernameText.Texts = "";
+            usernameText.UnderlinedStyle = true;
             // 
             // label3
             // 
@@ -127,40 +128,54 @@
             loginBtn.FlatAppearance.BorderSize = 0;
             loginBtn.FlatStyle = FlatStyle.Flat;
             loginBtn.ForeColor = Color.White;
-            loginBtn.Location = new Point(31, 261);
+            loginBtn.Location = new Point(31, 271);
             loginBtn.Name = "loginBtn";
             loginBtn.Size = new Size(225, 40);
             loginBtn.TabIndex = 3;
             loginBtn.Text = "Login";
             loginBtn.TextColor = Color.White;
             loginBtn.UseVisualStyleBackColor = false;
+            loginBtn.Click += loginBtn_Click;
             // 
             // Sign
             // 
             Sign.AutoSize = true;
             Sign.Font = new Font("Trebuchet MS", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             Sign.ForeColor = SystemColors.ControlDarkDark;
-            Sign.Location = new Point(112, 384);
+            Sign.Location = new Point(110, 395);
             Sign.Name = "Sign";
             Sign.Size = new Size(58, 18);
             Sign.TabIndex = 0;
             Sign.Text = "SIGN UP";
             Sign.Click += Sign_Click;
             // 
+            // passwordError
+            // 
+            passwordError.AutoSize = true;
+            passwordError.Font = new Font("Trebuchet MS", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            passwordError.ForeColor = Color.Red;
+            passwordError.Location = new Point(35, 242);
+            passwordError.Name = "passwordError";
+            passwordError.Size = new Size(0, 16);
+            passwordError.TabIndex = 0;
+            passwordError.Visible = false;
+            // 
             // Login
             // 
-            ClientSize = new Size(284, 424);
+            ClientSize = new Size(284, 431);
             Controls.Add(loginBtn);
             Controls.Add(passwordCheck);
             Controls.Add(passwordText);
+            Controls.Add(passwordError);
             Controls.Add(label3);
-            Controls.Add(ulTextBox1);
+            Controls.Add(usernameText);
             Controls.Add(label2);
             Controls.Add(Sign);
             Controls.Add(label1);
             Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Login";
+            StartPosition = FormStartPosition.CenterScreen;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -169,11 +184,12 @@
 
         private Label label1;
         private Label label2;
-        private ULControls.ULTextBox ulTextBox1;
+        private ULControls.ULTextBox usernameText;
         private Label label3;
         private ULControls.ULTextBox passwordText;
         private CheckBox passwordCheck;
         private ULControls.ULButton loginBtn;
         private Label Sign;
+        private Label passwordError;
     }
 }

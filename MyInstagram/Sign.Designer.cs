@@ -39,6 +39,10 @@
             emailText = new ULControls.ULTextBox();
             CreateBtn = new ULControls.ULButton();
             backBtn = new Button();
+            passwordError = new Label();
+            conpassError = new Label();
+            emailError = new Label();
+            usernameError = new Label();
             SuspendLayout();
             // 
             // label1
@@ -196,12 +200,60 @@
             backBtn.UseVisualStyleBackColor = false;
             backBtn.Click += backBtn_Click;
             // 
+            // passwordError
+            // 
+            passwordError.AutoSize = true;
+            passwordError.Font = new Font("Trebuchet MS", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            passwordError.ForeColor = Color.Red;
+            passwordError.Location = new Point(29, 189);
+            passwordError.Name = "passwordError";
+            passwordError.Size = new Size(0, 16);
+            passwordError.TabIndex = 6;
+            passwordError.Visible = false;
+            // 
+            // conpassError
+            // 
+            conpassError.AutoSize = true;
+            conpassError.Font = new Font("Trebuchet MS", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            conpassError.ForeColor = Color.Red;
+            conpassError.Location = new Point(29, 251);
+            conpassError.Name = "conpassError";
+            conpassError.Size = new Size(0, 16);
+            conpassError.TabIndex = 6;
+            conpassError.Visible = false;
+            // 
+            // emailError
+            // 
+            emailError.AutoSize = true;
+            emailError.Font = new Font("Trebuchet MS", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            emailError.ForeColor = Color.Red;
+            emailError.Location = new Point(29, 321);
+            emailError.Name = "emailError";
+            emailError.Size = new Size(0, 16);
+            emailError.TabIndex = 6;
+            emailError.Visible = false;
+            // 
+            // usernameError
+            // 
+            usernameError.AutoSize = true;
+            usernameError.Font = new Font("Trebuchet MS", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            usernameError.ForeColor = Color.Red;
+            usernameError.Location = new Point(29, 124);
+            usernameError.Name = "usernameError";
+            usernameError.Size = new Size(0, 16);
+            usernameError.TabIndex = 6;
+            usernameError.Visible = false;
+            // 
             // Sign
             // 
             AutoScaleDimensions = new SizeF(10F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.HighlightText;
             ClientSize = new Size(284, 432);
+            Controls.Add(emailError);
+            Controls.Add(conpassError);
+            Controls.Add(usernameError);
+            Controls.Add(passwordError);
             Controls.Add(backBtn);
             Controls.Add(CreateBtn);
             Controls.Add(emailText);
@@ -217,6 +269,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
             Name = "Sign";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Sign";
             ResumeLayout(false);
             PerformLayout();
@@ -235,5 +288,9 @@
         private ULControls.ULTextBox emailText;
         private ULControls.ULButton CreateBtn;
         private Button backBtn;
+        private Label passwordError;
+        private Label conpassError;
+        private Label emailError;
+        private Label usernameError;
     }
 }

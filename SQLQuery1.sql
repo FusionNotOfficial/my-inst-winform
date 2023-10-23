@@ -5,3 +5,7 @@
 	u_password VARCHAR(50),
 	Email VARCHAR(30),
 );
+
+Delete from Users where u_id = 1;
+
+INSERT INTO [Users] values('2', 'abobaboba', 'aboba')
