@@ -33,4 +33,3 @@ F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\bin\Debug\net7.0-windows\r
 F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.Direct.resources
 F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.directMessage.resources
 F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.Messenger.resources
-F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.Form1.resources

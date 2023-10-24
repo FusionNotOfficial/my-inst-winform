@@ -16,5 +16,15 @@ namespace MyInstagram
         {
             InitializeComponent();
         }
+        private Image imageSource;
+        [Category("Tools")]
+        public Image ImageSource
+        {
+            get { return imageSource; }
+            set { 
+                picture.Image = value;
+                picture.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+        }
     }
 }

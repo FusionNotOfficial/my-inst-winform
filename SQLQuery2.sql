@@ -5,3 +5,5 @@
 	send_date DATETIME,
 	room INT FOREIGN KEY REFERENCES Rooms(r_id)
 )
+
+Delete * from users

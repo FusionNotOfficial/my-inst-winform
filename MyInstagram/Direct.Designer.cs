@@ -30,19 +30,30 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Direct));
             flowLayoutPanel1 = new FlowLayoutPanel();
+            directMessage1 = new directMessage();
             username = new Label();
             messenger = new PictureBox();
             ulTextBox1 = new ULControls.ULTextBox();
             label1 = new Label();
+            flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)messenger).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
+            flowLayoutPanel1.Controls.Add(directMessage1);
             flowLayoutPanel1.Location = new Point(-1, 116);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(287, 316);
             flowLayoutPanel1.TabIndex = 0;
+            // 
+            // directMessage1
+            // 
+            directMessage1.ImageSource = null;
+            directMessage1.Location = new Point(3, 3);
+            directMessage1.Name = "directMessage1";
+            directMessage1.Size = new Size(284, 56);
+            directMessage1.TabIndex = 0;
             // 
             // username
             // 
@@ -67,12 +78,12 @@
             // 
             // ulTextBox1
             // 
-            ulTextBox1.BackColor = SystemColors.Window;
-            ulTextBox1.BorderColor = Color.MediumSlateBlue;
+            ulTextBox1.BackColor = SystemColors.WindowFrame;
+            ulTextBox1.BorderColor = Color.Transparent;
             ulTextBox1.BorderFocusColor = Color.HotPink;
-            ulTextBox1.BorderSize = 2;
+            ulTextBox1.BorderSize = 0;
             ulTextBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            ulTextBox1.ForeColor = Color.DimGray;
+            ulTextBox1.ForeColor = Color.Silver;
             ulTextBox1.Location = new Point(-1, 60);
             ulTextBox1.Multiline = false;
             ulTextBox1.Name = "ulTextBox1";
@@ -109,6 +120,7 @@
             Name = "Direct";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Direct";
+            flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)messenger).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -121,5 +133,6 @@
         private PictureBox messenger;
         private ULControls.ULTextBox ulTextBox1;
         private Label label1;
+        private directMessage directMessage1;
     }
 }
