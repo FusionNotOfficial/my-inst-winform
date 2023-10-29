@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyInstagram", "MyInstagram\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ULControls", "..\ULControls\ULControls.csproj", "{B260D01C-3B32-4748-B324-5227B144CF44}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParkingMS", "..\ParkingMS\ParkingMS\ParkingMS.csproj", "{8AA8A9B2-F14D-49D1-BD09-030A60F1A755}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{B260D01C-3B32-4748-B324-5227B144CF44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B260D01C-3B32-4748-B324-5227B144CF44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B260D01C-3B32-4748-B324-5227B144CF44}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8AA8A9B2-F14D-49D1-BD09-030A60F1A755}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8AA8A9B2-F14D-49D1-BD09-030A60F1A755}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8AA8A9B2-F14D-49D1-BD09-030A60F1A755}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8AA8A9B2-F14D-49D1-BD09-030A60F1A755}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,4 @@
 using System.Data;
-using System.Data.SqlClient;
 
 namespace MyInstagram
 {
@@ -29,6 +28,7 @@ namespace MyInstagram
         {
             string username = usernameText.Texts;
             string password = passwordText.Texts;
+            int id = 0;
             if (password.Length < 8)
             {
                 passwordError.Visible = true;
@@ -42,11 +42,15 @@ namespace MyInstagram
                     string query = "SELECT * FROM USERS WHERE u_username = '" + username + "' AND u_password = '" + password + "'";
                     DataTable dt = new DataTable();
                     dt = Con.GetData(query);
-
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        id = Convert.ToInt32(row["u_id"]);
+                    }
                     if (dt.Rows.Count > 0)
                     {
-                        var hmpg = new Homepage();
+                        var hmpg = new Homepage(id);
                         hmpg.Show();
+                        Hide();
                     }
                     else
                     {

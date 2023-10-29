@@ -30,41 +30,31 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Direct));
             flowLayoutPanel1 = new FlowLayoutPanel();
-            directMessage1 = new directMessage();
-            username = new Label();
+            account_name = new Label();
             messenger = new PictureBox();
             ulTextBox1 = new ULControls.ULTextBox();
             label1 = new Label();
-            flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)messenger).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.Controls.Add(directMessage1);
             flowLayoutPanel1.Location = new Point(-1, 116);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(287, 316);
             flowLayoutPanel1.TabIndex = 0;
+            flowLayoutPanel1.Click += button1_Click;
             // 
-            // directMessage1
+            // account_name
             // 
-            directMessage1.ImageSource = null;
-            directMessage1.Location = new Point(3, 3);
-            directMessage1.Name = "directMessage1";
-            directMessage1.Size = new Size(284, 56);
-            directMessage1.TabIndex = 0;
-            // 
-            // username
-            // 
-            username.AutoSize = true;
-            username.Font = new Font("Trebuchet MS", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            username.ForeColor = SystemColors.ButtonHighlight;
-            username.Location = new Point(53, 19);
-            username.Name = "username";
-            username.Size = new Size(154, 27);
-            username.TabIndex = 1;
-            username.Text = "account_name";
+            account_name.AutoSize = true;
+            account_name.Font = new Font("Trebuchet MS", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            account_name.ForeColor = SystemColors.ButtonHighlight;
+            account_name.Location = new Point(53, 19);
+            account_name.Name = "account_name";
+            account_name.Size = new Size(154, 27);
+            account_name.TabIndex = 1;
+            account_name.Text = "account_name";
             // 
             // messenger
             // 
@@ -114,13 +104,12 @@
             Controls.Add(ulTextBox1);
             Controls.Add(messenger);
             Controls.Add(label1);
-            Controls.Add(username);
+            Controls.Add(account_name);
             Controls.Add(flowLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Direct";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Direct";
-            flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)messenger).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -129,10 +118,10 @@
         #endregion
 
         private FlowLayoutPanel flowLayoutPanel1;
-        private Label username;
+        private Label account_name;
         private PictureBox messenger;
         private ULControls.ULTextBox ulTextBox1;
         private Label label1;
-        private directMessage directMessage1;
+        private DirectMessage directMessage1;
     }
 }

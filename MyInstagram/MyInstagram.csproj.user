@@ -7,8 +7,14 @@
     <Compile Update="directMessage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="EditProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Homepage.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="LabelLine.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Update="Login.cs">
       <SubType>Form</SubType>

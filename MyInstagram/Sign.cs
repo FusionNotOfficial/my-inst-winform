@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using System.Data;
+using System.Data.SqlClient;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace MyInstagram
 {
@@ -34,6 +26,9 @@ namespace MyInstagram
             string password = passwordText.Texts;
             string conpass = ConpassText.Texts;
             string email = emailText.Texts;
+            Image defaultFile = Image.FromFile(@"..\default.jpg");
+            MemoryStream ms = new MemoryStream();
+            defaultFile.Save(ms, defaultFile.RawFormat);
 
             string usersQuery = "SELECT * FROM USERS WHERE u_username = '" + username + "'";
             DataTable dt = new DataTable();
@@ -73,12 +68,18 @@ namespace MyInstagram
                 usernameError.Visible = false;
                 try
                 {
-                    string query = "INSERT INTO Users values('{0}', '{1}', '{2}')";
-                    query = string.Format(query, username, password, email);
-                    Con.SetData(query);
-                    Homepage homepage = new Homepage();
-                    homepage.Show();
-                    Close();
+                    string query = "INSERT INTO Users(u_username, u_password, u_email, u_picture, u_description) VALUES (@username, @password, @email, @picture, @description)";
+                    SqlCommand smd = new SqlCommand(query, Con.Con);
+                    MemoryStream me = new MemoryStream();
+                    Image.FromFile(@"..\default.jpg").Save(ms, Image.FromFile(@"..\default.jpg").RawFormat);
+                    smd.Parameters.AddWithValue("username", username);
+                    smd.Parameters.AddWithValue("password", password);
+                    smd.Parameters.AddWithValue("email", email);
+                    smd.Parameters.AddWithValue("picture", ms.ToArray());
+                    smd.Parameters.AddWithValue("description", string.Empty);
+                    Con.Con.Open();
+                    smd.ExecuteNonQuery();
+                    Con.Con.Close();
                 }
                 catch (Exception Ex) { MessageBox.Show(Ex.Message); }
                 finally { Close(); }

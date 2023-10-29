@@ -1,6 +1,6 @@
 ﻿namespace MyInstagram
 {
-    partial class directMessage
+    partial class DirectMessage
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(directMessage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DirectMessage));
             picture = new RoundPictureBox();
             username = new Label();
             lastMessage = new Label();
