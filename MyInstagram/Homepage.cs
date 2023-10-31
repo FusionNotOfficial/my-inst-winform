@@ -80,8 +80,9 @@ namespace MyInstagram
 
         private void editProfileButton_Click(object sender, EventArgs e)
         {
-            var ep = new EditProfile();
+            var ep = new EditProfile(id);
             ep.Show();
+            Close();
 
         }
     }

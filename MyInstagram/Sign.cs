@@ -26,9 +26,6 @@ namespace MyInstagram
             string password = passwordText.Texts;
             string conpass = ConpassText.Texts;
             string email = emailText.Texts;
-            Image defaultFile = Image.FromFile(@"..\default.jpg");
-            MemoryStream ms = new MemoryStream();
-            defaultFile.Save(ms, defaultFile.RawFormat);
 
             string usersQuery = "SELECT * FROM USERS WHERE u_username = '" + username + "'";
             DataTable dt = new DataTable();
@@ -71,11 +68,11 @@ namespace MyInstagram
                     string query = "INSERT INTO Users(u_username, u_password, u_email, u_picture, u_description) VALUES (@username, @password, @email, @picture, @description)";
                     SqlCommand smd = new SqlCommand(query, Con.Con);
                     MemoryStream me = new MemoryStream();
-                    Image.FromFile(@"..\default.jpg").Save(ms, Image.FromFile(@"..\default.jpg").RawFormat);
+                    Image.FromFile(@"..\default.jpg").Save(me, Image.FromFile(@"..\default.jpg").RawFormat);
                     smd.Parameters.AddWithValue("username", username);
                     smd.Parameters.AddWithValue("password", password);
                     smd.Parameters.AddWithValue("email", email);
-                    smd.Parameters.AddWithValue("picture", ms.ToArray());
+                    smd.Parameters.AddWithValue("picture", me.ToArray());
                     smd.Parameters.AddWithValue("description", string.Empty);
                     Con.Con.Open();
                     smd.ExecuteNonQuery();

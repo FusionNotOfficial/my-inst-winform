@@ -32,8 +32,9 @@ namespace MyInstagram
                             MemoryStream ms = new MemoryStream((byte[])row["u_picture"]);
                             directControls[i].ImageSource = Image.FromStream(ms);
                             directControls[i].AccountName = row["u_username"].ToString();
+                            string sameName = row["u_username"].ToString();
                             directControls[i].LastMessage = String.Empty; // Позже реализую
-                            if (directControls[i].AccountName == account_name.Text)
+                            if (sameName == account_name.Text)
                             {
                                 flowLayoutPanel1.Controls.Remove(directControls[i]);
                             }

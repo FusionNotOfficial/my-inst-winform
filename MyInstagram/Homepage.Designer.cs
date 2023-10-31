@@ -68,14 +68,13 @@
             panel3.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)userImage).BeginInit();
-            home_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
             // Direct
             // 
             Direct.Image = (Image)resources.GetObject("Direct.Image");
-            Direct.Location = new Point(9, 9);
+            Direct.Location = new Point(188, 280);
             Direct.Name = "Direct";
             Direct.Size = new Size(32, 33);
             Direct.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -195,6 +194,7 @@
             // 
             // account_panel
             // 
+            account_panel.Controls.Add(Direct);
             account_panel.Controls.Add(DescriptionLabel);
             account_panel.Controls.Add(PostButton);
             account_panel.Controls.Add(editProfileButton);
@@ -353,10 +353,9 @@
             // 
             // home_panel
             // 
-            home_panel.Controls.Add(Direct);
             home_panel.Location = new Point(3, 3);
             home_panel.Name = "home_panel";
-            home_panel.Size = new Size(10, 389);
+            home_panel.Size = new Size(24, 389);
             home_panel.TabIndex = 1;
             home_panel.Visible = false;
             // 
@@ -408,7 +407,6 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)userImage).EndInit();
-            home_panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
         }
