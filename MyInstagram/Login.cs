@@ -5,9 +5,12 @@ namespace MyInstagram
     public partial class Login : Form
     {
         Functions Con = new Functions();
+        public int id;
+        public static Login instanse;
         public Login()
         {
             InitializeComponent();
+            instanse = this;
         }
 
         private void Sign_Click(object sender, EventArgs e)
@@ -28,7 +31,6 @@ namespace MyInstagram
         {
             string username = usernameText.Texts;
             string password = passwordText.Texts;
-            int id = 0;
             if (password.Length < 8)
             {
                 passwordError.Visible = true;
@@ -48,7 +50,7 @@ namespace MyInstagram
                     }
                     if (dt.Rows.Count > 0)
                     {
-                        var hmpg = new Homepage(id);
+                        var hmpg = new Homepage();
                         hmpg.Show();
                         Hide();
                     }

@@ -54,7 +54,6 @@
             userImage = new RoundPictureBox();
             usernameLabel = new Label();
             home_panel = new Panel();
-            pictureBox4 = new PictureBox();
             labelLine1 = new LabelLine();
             ((System.ComponentModel.ISupportInitialize)Direct).BeginInit();
             panel1.SuspendLayout();
@@ -68,15 +67,14 @@
             panel3.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)userImage).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
             // Direct
             // 
             Direct.Image = (Image)resources.GetObject("Direct.Image");
-            Direct.Location = new Point(188, 280);
+            Direct.Location = new Point(251, 6);
             Direct.Name = "Direct";
-            Direct.Size = new Size(32, 33);
+            Direct.Size = new Size(30, 30);
             Direct.SizeMode = PictureBoxSizeMode.StretchImage;
             Direct.TabIndex = 0;
             Direct.TabStop = false;
@@ -117,9 +115,9 @@
             // 
             pictureBox3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(30, 5);
+            pictureBox3.Location = new Point(33, 8);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(29, 29);
+            pictureBox3.Size = new Size(26, 26);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 0;
             pictureBox3.TabStop = false;
@@ -146,9 +144,9 @@
             // 
             pictureBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(26, 5);
+            pictureBox2.Location = new Point(33, 5);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(31, 31);
+            pictureBox2.Size = new Size(27, 27);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 0;
             pictureBox2.TabStop = false;
@@ -184,9 +182,9 @@
             // 
             pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(32, 4);
+            pictureBox1.Location = new Point(37, 6);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(33, 33);
+            pictureBox1.Size = new Size(28, 28);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -203,7 +201,6 @@
             account_panel.Controls.Add(userImage);
             account_panel.Controls.Add(usernameLabel);
             account_panel.Controls.Add(home_panel);
-            account_panel.Controls.Add(pictureBox4);
             account_panel.Dock = DockStyle.Top;
             account_panel.Location = new Point(0, 0);
             account_panel.Name = "account_panel";
@@ -217,9 +214,9 @@
             DescriptionLabel.ForeColor = SystemColors.ButtonFace;
             DescriptionLabel.Location = new Point(19, 121);
             DescriptionLabel.Name = "DescriptionLabel";
-            DescriptionLabel.Size = new Size(218, 18);
+            DescriptionLabel.Size = new Size(73, 18);
             DescriptionLabel.TabIndex = 7;
-            DescriptionLabel.Text = "вывыывыывывыввывывывыыывыв";
+            DescriptionLabel.Text = "description";
             // 
             // PostButton
             // 
@@ -359,17 +356,6 @@
             home_panel.TabIndex = 1;
             home_panel.Visible = false;
             // 
-            // pictureBox4
-            // 
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(246, 12);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(29, 29);
-            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox4.TabIndex = 0;
-            pictureBox4.TabStop = false;
-            pictureBox4.Click += Direct_Click;
-            // 
             // labelLine1
             // 
             labelLine1.BorderStyle = BorderStyle.Fixed3D;
@@ -407,7 +393,6 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)userImage).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
         }
 
@@ -426,7 +411,6 @@
         private Label label1;
         private Label label2;
         private Panel account_panel;
-        private PictureBox pictureBox4;
         private Panel home_panel;
         private RoundPictureBox userImage;
         private Label usernameLabel;

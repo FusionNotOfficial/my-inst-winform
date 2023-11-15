@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace MyInstagram
 {
@@ -8,6 +9,7 @@ namespace MyInstagram
         {
             InitializeComponent();
         }
+
         private Image imageSource;
         [Category("Tools")]
         public Image ImageSource
@@ -33,6 +35,13 @@ namespace MyInstagram
         {
             get { return lastSeenMessage; }
             set { lastMessage.Text = value; }
+        }
+        private int roomId;
+        [Category("Tools")]
+        public int RoomId
+        {
+            get { return roomId; }
+            set { roomId = value; }
         }
     }
 }

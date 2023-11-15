@@ -30,30 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DirectMessage));
             picture = new RoundPictureBox();
-            username = new Label();
             lastMessage = new Label();
+            username = new spLabel();
             ((System.ComponentModel.ISupportInitialize)picture).BeginInit();
             SuspendLayout();
             // 
             // picture
             // 
+            picture.Enabled = false;
             picture.Image = (Image)resources.GetObject("picture.Image");
             picture.Location = new Point(12, 3);
             picture.Name = "picture";
             picture.Size = new Size(50, 50);
             picture.TabIndex = 1;
             picture.TabStop = false;
-            // 
-            // username
-            // 
-            username.AutoSize = true;
-            username.Font = new Font("Trebuchet MS", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            username.ForeColor = SystemColors.ButtonHighlight;
-            username.Location = new Point(68, 3);
-            username.Name = "username";
-            username.Size = new Size(68, 18);
-            username.TabIndex = 2;
-            username.Text = "username";
             // 
             // lastMessage
             // 
@@ -66,14 +56,25 @@
             lastMessage.TabIndex = 2;
             lastMessage.Text = "lastMessage";
             // 
-            // directMessage
+            // username
+            // 
+            username.AutoSize = true;
+            username.Enabled = false;
+            username.Font = new Font("Trebuchet MS", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            username.Location = new Point(68, 5);
+            username.Name = "username";
+            username.Size = new Size(68, 18);
+            username.TabIndex = 3;
+            username.Text = "username";
+            // 
+            // DirectMessage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(lastMessage);
             Controls.Add(username);
+            Controls.Add(lastMessage);
             Controls.Add(picture);
-            Name = "directMessage";
+            Name = "DirectMessage";
             Size = new Size(342, 56);
             ((System.ComponentModel.ISupportInitialize)picture).EndInit();
             ResumeLayout(false);
@@ -81,8 +82,8 @@
         }
 
         #endregion
-        private RoundPictureBox picture;
-        private Label username;
         private Label lastMessage;
+        public RoundPictureBox picture;
+        private spLabel username;
     }
 }

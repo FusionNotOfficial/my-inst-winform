@@ -6,17 +6,26 @@ namespace MyInstagram
     public partial class Direct : Form
     {
         Functions Con;
-        public Direct(string username)
+        private int id;
+
+        public Direct()
         {
+            id = Login.instanse.id;
             InitializeComponent();
-            account_name.Text = username;
             Con = new Functions();
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT u_username FROM Users WHERE u_id = '" + id + "'", Con.Con);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            DataRow row = dt.Rows[0];
+            account_name.Text = row["u_username"].ToString();
             UserItem();
         }
+
+
         public void UserItem()
         {
             flowLayoutPanel1.Controls.Clear();
-            SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Users", Con.Con);
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Rooms INNER JOIN Users ON Rooms.reciever = Users.u_id WHERE sender = (SELECT u_id FROM Users WHERE u_username = '" + account_name.Text + "')", Con.Con);
             DataTable dt = new DataTable();
             adapter.Fill(dt);
             if (dt != null)
@@ -32,16 +41,15 @@ namespace MyInstagram
                             MemoryStream ms = new MemoryStream((byte[])row["u_picture"]);
                             directControls[i].ImageSource = Image.FromStream(ms);
                             directControls[i].AccountName = row["u_username"].ToString();
+                            directControls[i].RoomId = Convert.ToInt32(row["r_id"]);
                             string sameName = row["u_username"].ToString();
                             directControls[i].LastMessage = String.Empty; // Позже реализую
+
                             if (sameName == account_name.Text)
-                            {
                                 flowLayoutPanel1.Controls.Remove(directControls[i]);
-                            }
                             else
-                            {
                                 flowLayoutPanel1.Controls.Add(directControls[i]);
-                            }
+
                             directControls[i].Click += new EventHandler(button1_Click);
                         }
                     }
@@ -49,18 +57,21 @@ namespace MyInstagram
             }
             Con.Con.Close();
         }
-
-        private Image GetImage(byte[] img)
-        {
-            MemoryStream ms = new MemoryStream(img);
-            return Image.FromStream(ms);
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            Messenger mess = new Messenger();
+            var dialog = sender as DirectMessage;
+
+
+            Messenger mess = new Messenger(dialog.RoomId, id);
+            Close();
             mess.Show();
-            this.Close();
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            var dir = new Homepage();
+            dir.Show();
+            Close();
         }
     }
 }

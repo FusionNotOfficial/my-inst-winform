@@ -39,6 +39,7 @@
             // 
             // flowLayoutPanel1
             // 
+            flowLayoutPanel1.BackColor = SystemColors.ActiveCaptionText;
             flowLayoutPanel1.Location = new Point(-1, 116);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(287, 316);
@@ -65,6 +66,7 @@
             messenger.SizeMode = PictureBoxSizeMode.StretchImage;
             messenger.TabIndex = 2;
             messenger.TabStop = false;
+            messenger.Click += backButton_Click;
             // 
             // ulTextBox1
             // 

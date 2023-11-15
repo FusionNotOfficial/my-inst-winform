@@ -19,14 +19,23 @@
     <Compile Update="Login.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Message.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Messenger.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="RoundControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="RoundPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="Sign.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="spLabel.cs">
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
 </Project>

@@ -10,14 +10,16 @@ namespace MyInstagram
         private string username, password, description;
         private bool isChanged = false;
         Functions Con;
-        public EditProfile(int id)
+        public EditProfile()
         {
             InitializeComponent();
             Con = new Functions();
-            this.id = id;
+            id = Login.instanse.id;
         }
         private void backButton_Click(object sender, EventArgs e)
         {
+            var hmpg = new Homepage();
+            hmpg.Show();
             Close();
         }
 
@@ -79,7 +81,7 @@ namespace MyInstagram
                 string query = "UPDATE Users SET u_username = @username, u_password = @password, u_picture = @picture, u_description = @description WHERE u_id = '" + id + "'";
                 SqlCommand smd = new SqlCommand(query, Con.Con);
                 smd.Parameters.AddWithValue("username", newUsername.Texts);
-                if(Password.Texts.Length == 0)
+                if (Password.Texts.Length == 0)
                     smd.Parameters.AddWithValue("password", password);
                 else
                     smd.Parameters.AddWithValue("password", Password.Texts);
@@ -89,7 +91,7 @@ namespace MyInstagram
                 smd.ExecuteNonQuery();
                 Con.Con.Close();
                 MessageBox.Show("Changes saved!");
-                Homepage hmp = new Homepage(id);
+                Homepage hmp = new Homepage();
                 hmp.Show();
                 Close();
             }

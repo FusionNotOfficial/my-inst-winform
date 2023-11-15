@@ -1,20 +1,18 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using System.Runtime.InteropServices;
 
 namespace MyInstagram
 {
     public partial class Homepage : Form
     {
         private int id;
-        string username = String.Empty;
         Functions Con;
-        public Homepage(int id)
+        public Homepage()
         {
             InitializeComponent();
             Con = new Functions();
             account_select.BackColor = Color.Gray;
-            this.id = id;
+            id = Login.instanse.id;
             UserLoad();
         }
         private void UserLoad()
@@ -30,8 +28,7 @@ namespace MyInstagram
                     {
                         MemoryStream ms = new MemoryStream((byte[])row["u_picture"]);
                         userImage.Image = Image.FromStream(ms);
-                        username = row["u_username"].ToString();
-                        usernameLabel.Text = username;
+                        usernameLabel.Text = row["u_username"].ToString();
                         DescriptionLabel.Text = row["u_description"].ToString();
                     }
                 }
@@ -41,8 +38,8 @@ namespace MyInstagram
 
         private void Direct_Click(object sender, EventArgs e)
         {
-            Direct direct = new Direct(username);
-            this.Hide();
+            Direct direct = new Direct();
+            Hide();
             direct.Show();
         }
 
@@ -80,7 +77,7 @@ namespace MyInstagram
 
         private void editProfileButton_Click(object sender, EventArgs e)
         {
-            var ep = new EditProfile(id);
+            var ep = new EditProfile();
             ep.Show();
             Close();
 

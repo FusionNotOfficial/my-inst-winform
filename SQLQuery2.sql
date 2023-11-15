@@ -20,9 +20,17 @@ CREATE TABLE Messages
 	m_id INT PRIMARY KEY IDENTITY(1,1),
 	text_content VARCHAR(200),
 	send_date DATETIME,
+	checked TINYINT(1),
 	room INT FOREIGN KEY REFERENCES Rooms(r_id)
 )
 
+INSERT INTO Rooms(sender, reciever) VALUES(1,2)
+INSERT INTO Rooms(sender, reciever) VALUES(1,3)
+
+SELECT * FROM Rooms INNER JOIN Users ON Rooms.reciever = Users.u_id WHERE sender = (SELECT u_id FROM Users WHERE u_username = 'admin')
+
+SELECT u_username FROM Rooms INNER JOIN Users ON Rooms.reciever = Users.u_id WHERE sender = (SELECT u_id FROM Users WHERE r_id = 1)
+SELECT * FROM Rooms INNER JOIN Users ON Rooms.reciever = Users.u_id WHERE r_id = 1
 
 drop table messages
 drop table rooms

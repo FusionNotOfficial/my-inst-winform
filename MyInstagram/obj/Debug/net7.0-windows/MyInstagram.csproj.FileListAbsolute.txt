@@ -17,10 +17,13 @@ F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\bin\Debug\net7.0-windows\U
 F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.csproj.AssemblyReference.cache
 F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.Direct.resources
 F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.DirectMessage.resources
+F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.EditProfile.resources
 F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.Homepage.resources
 F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.Login.resources
+F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.Message.resources
 F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.Messenger.resources
 F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.Properties.Resources.resources
+F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.RoundControl.resources
 F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.Sign.resources
 F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.csproj.GenerateResource.cache
 F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.GeneratedMSBuildEditorConfig.editorconfig
@@ -33,4 +36,4 @@ F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\r
 F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.pdb
 F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.genruntimeconfig.cache
 F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\ref\MyInstagram.dll
-F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.EditProfile.resources
+F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\bin\Debug\net7.0-windows\spLabel.cs
