@@ -39,7 +39,7 @@
             date.BackColor = Color.RoyalBlue;
             date.FlatStyle = FlatStyle.System;
             date.ForeColor = SystemColors.AppWorkspace;
-            date.Location = new Point(149, 27);
+            date.Location = new Point(152, 16);
             date.Name = "date";
             date.Size = new Size(34, 15);
             date.TabIndex = 1;
@@ -49,10 +49,9 @@
             // 
             roundControl1.BackColor = Color.RoyalBlue;
             roundControl1.ForeColor = SystemColors.ControlLightLight;
-            roundControl1.Location = new Point(0, 5);
+            roundControl1.Location = new Point(0, 3);
             roundControl1.Name = "roundControl1";
-            roundControl1.Radius = 40;
-            roundControl1.Size = new Size(199, 42);
+            roundControl1.Size = new Size(199, 32);
             roundControl1.TabIndex = 0;
             // 
             // content
@@ -61,11 +60,12 @@
             content.BackColor = Color.RoyalBlue;
             content.Font = new Font("Trebuchet MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             content.ForeColor = SystemColors.ButtonHighlight;
-            content.Location = new Point(17, 14);
+            content.Location = new Point(4, 9);
+            content.MaximumSize = new Size(180, 50);
             content.Name = "content";
-            content.Size = new Size(58, 18);
+            content.Size = new Size(178, 36);
             content.TabIndex = 2;
-            content.Text = "Message";
+            content.Text = "Messaaaaaaфффффaaaaaaaaaa";
             // 
             // Message
             // 
@@ -76,7 +76,7 @@
             Controls.Add(content);
             Controls.Add(roundControl1);
             Name = "Message";
-            Size = new Size(280, 50);
+            Size = new Size(203, 38);
             ResumeLayout(false);
             PerformLayout();
         }

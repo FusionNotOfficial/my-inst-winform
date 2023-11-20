@@ -29,7 +29,7 @@ namespace MyInstagram
             for (int i = 0; i < 5; i++)
             {
                 messages[i] = new Message();
-                messages[i].content.Text = "Hello";
+                messages[i].MessageContent = "Helloaaaaaaaaaaaaaaaaaaaaa";
                 if (i % 2 == 0)
                 {
                     messages[i].Margin = new Padding(79, 0, 0, 0);
