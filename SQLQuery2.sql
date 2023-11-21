@@ -27,13 +27,19 @@ CREATE TABLE Messages
 INSERT INTO Rooms(sender, reciever) VALUES(1,2)
 INSERT INTO Rooms(sender, reciever) VALUES(1,3)
 
+INSERT INTO Messages(text_content, send_date, room, sender, checked) VALUES('Hello', GETTIME(), 1, 1, 0)
+
 SELECT * FROM Rooms INNER JOIN Users ON Rooms.reciever = Users.u_id WHERE sender = (SELECT u_id FROM Users WHERE u_username = 'admin')
 
 SELECT u_username FROM Rooms INNER JOIN Users ON Rooms.reciever = Users.u_id WHERE sender = (SELECT u_id FROM Users WHERE r_id = 1)
 SELECT * FROM Rooms INNER JOIN Users ON Rooms.reciever = Users.u_id WHERE r_id = 1
+
+ALTER TABLE Messages 
+ALTER COLUMN send_date datetime
 
 drop table messages
 drop table rooms
 drop table users
 
 delete from users where u_id = 5
+delete from messages

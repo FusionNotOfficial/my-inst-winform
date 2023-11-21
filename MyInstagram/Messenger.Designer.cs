@@ -29,53 +29,39 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Messenger));
-            ulTextBox1 = new ULControls.ULTextBox();
-            sendButton = new ULControls.ULButton();
+            message = new ULControls.ULTextBox();
             pictureBox1 = new PictureBox();
             account_name = new Label();
             labelLine1 = new LabelLine();
             messagesPanel = new FlowLayoutPanel();
+            LengthError = new Label();
             roomIcon = new RoundPictureBox();
             label1 = new Label();
+            sendIcon = new PictureBox();
+            sendButton = new RoundControl();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)roomIcon).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)sendIcon).BeginInit();
             SuspendLayout();
             // 
-            // ulTextBox1
+            // message
             // 
-            ulTextBox1.BackColor = SystemColors.Window;
-            ulTextBox1.BorderColor = SystemColors.ControlDarkDark;
-            ulTextBox1.BorderFocusColor = Color.HotPink;
-            ulTextBox1.BorderSize = 2;
-            ulTextBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            ulTextBox1.ForeColor = Color.DimGray;
-            ulTextBox1.Location = new Point(12, 389);
-            ulTextBox1.Multiline = false;
-            ulTextBox1.Name = "ulTextBox1";
-            ulTextBox1.Padding = new Padding(7);
-            ulTextBox1.PasswordChar = false;
-            ulTextBox1.Size = new Size(228, 30);
-            ulTextBox1.TabIndex = 0;
-            ulTextBox1.Texts = "";
-            ulTextBox1.UnderlinedStyle = true;
-            // 
-            // sendButton
-            // 
-            sendButton.BackColor = Color.DodgerBlue;
-            sendButton.BackgroundColor = Color.DodgerBlue;
-            sendButton.BorderColor = Color.PaleVioletRed;
-            sendButton.BorderRadius = 30;
-            sendButton.BorderSize = 0;
-            sendButton.FlatAppearance.BorderSize = 0;
-            sendButton.FlatStyle = FlatStyle.Flat;
-            sendButton.ForeColor = Color.White;
-            sendButton.Location = new Point(222, 387);
-            sendButton.Name = "sendButton";
-            sendButton.Size = new Size(50, 32);
-            sendButton.TabIndex = 1;
-            sendButton.Text = "send";
-            sendButton.TextColor = Color.White;
-            sendButton.UseVisualStyleBackColor = false;
+            message.BackColor = SystemColors.Window;
+            message.BorderColor = SystemColors.ControlDarkDark;
+            message.BorderFocusColor = Color.HotPink;
+            message.BorderSize = 2;
+            message.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            message.ForeColor = Color.DimGray;
+            message.Location = new Point(12, 389);
+            message.Multiline = true;
+            message.Name = "message";
+            message.Padding = new Padding(7);
+            message.PasswordChar = false;
+            message.Size = new Size(228, 30);
+            message.TabIndex = 0;
+            message.Texts = "";
+            message.UnderlinedStyle = true;
+            message._TextChanged += message__TextChanged;
             // 
             // pictureBox1
             // 
@@ -115,6 +101,18 @@
             messagesPanel.Size = new Size(285, 340);
             messagesPanel.TabIndex = 8;
             // 
+            // LengthError
+            // 
+            LengthError.AutoSize = true;
+            LengthError.Font = new Font("Trebuchet MS", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LengthError.ForeColor = Color.Red;
+            LengthError.Location = new Point(12, 370);
+            LengthError.Name = "LengthError";
+            LengthError.Size = new Size(158, 16);
+            LengthError.TabIndex = 12;
+            LengthError.Text = "Message limit is 100 symbols!";
+            LengthError.Visible = false;
+            // 
             // roomIcon
             // 
             roomIcon.Image = (Image)resources.GetObject("roomIcon.Image");
@@ -136,39 +134,67 @@
             label1.TabIndex = 6;
             label1.Text = "was active at 18:30";
             // 
+            // sendIcon
+            // 
+            sendIcon.BackColor = Color.CornflowerBlue;
+            sendIcon.Enabled = false;
+            sendIcon.Image = (Image)resources.GetObject("sendIcon.Image");
+            sendIcon.Location = new Point(235, 389);
+            sendIcon.Name = "sendIcon";
+            sendIcon.Size = new Size(26, 30);
+            sendIcon.SizeMode = PictureBoxSizeMode.StretchImage;
+            sendIcon.TabIndex = 10;
+            sendIcon.TabStop = false;
+            // 
+            // sendButton
+            // 
+            sendButton.BackColor = Color.CornflowerBlue;
+            sendButton.Location = new Point(223, 389);
+            sendButton.Name = "sendButton";
+            sendButton.Size = new Size(49, 31);
+            sendButton.TabIndex = 11;
+            sendButton.Click += sendButton_Click;
+            sendButton.MouseEnter += sendButton_Enter;
+            sendButton.MouseLeave += sendButton_MouseLeave;
+            // 
             // Messenger
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(284, 431);
+            Controls.Add(LengthError);
+            Controls.Add(sendIcon);
+            Controls.Add(sendButton);
             Controls.Add(roomIcon);
             Controls.Add(messagesPanel);
             Controls.Add(labelLine1);
             Controls.Add(label1);
             Controls.Add(account_name);
             Controls.Add(pictureBox1);
-            Controls.Add(sendButton);
-            Controls.Add(ulTextBox1);
+            Controls.Add(message);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Messenger";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Messenger";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)roomIcon).EndInit();
+            ((System.ComponentModel.ISupportInitialize)sendIcon).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private ULControls.ULTextBox ulTextBox1;
-        private ULControls.ULButton sendButton;
+        private ULControls.ULTextBox message;
         private PictureBox pictureBox1;
         private Label account_name;
         private LabelLine labelLine1;
         private FlowLayoutPanel messagesPanel;
         private RoundPictureBox roomIcon;
         private Label label1;
+        private PictureBox sendIcon;
+        private RoundControl sendButton;
+        private Label LengthError;
     }
 }

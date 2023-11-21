@@ -2,6 +2,7 @@
 {
     public partial class Message : UserControl
     {
+        private int expand = 14;
         private string messageContent;
         public string MessageContent
         {
@@ -11,9 +12,12 @@
                 content.Text = value;
                 if (content.Width > 150)
                 {
-                    roundControl1.Height += 13;
-                    this.Height += 13;
-                    date.Location = new Point(date.Location.X, date.Location.Y + 13);
+                    for (int i = 0; i < content.Height / 18; i++)
+                    {
+                        roundControl1.Height += expand;
+                        this.Height += expand;
+                        date.Location = new Point(date.Location.X, date.Location.Y + expand);
+                    }
                 }
             }
         }
@@ -21,11 +25,12 @@
         public int Sender
         {
             get { return sender; }
-            set
-            {
-                sender = value;
-            }
+            set { sender = value; }
         }
+        private DateTime sendDate;
+        public DateTime SendDate { get; set; }
+        private bool idChecked;
+        public bool IdChecked { get; set; }
         public Message()
         {
             InitializeComponent();

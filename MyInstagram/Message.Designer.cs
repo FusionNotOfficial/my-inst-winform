@@ -61,11 +61,11 @@
             content.Font = new Font("Trebuchet MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             content.ForeColor = SystemColors.ButtonHighlight;
             content.Location = new Point(4, 9);
-            content.MaximumSize = new Size(180, 50);
+            content.MaximumSize = new Size(180, 150);
             content.Name = "content";
-            content.Size = new Size(178, 36);
+            content.Size = new Size(59, 18);
             content.TabIndex = 2;
-            content.Text = "Messaaaaaaфффффaaaaaaaaaa";
+            content.Text = "message";
             // 
             // Message
             // 
