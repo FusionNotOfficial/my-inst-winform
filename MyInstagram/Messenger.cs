@@ -28,24 +28,22 @@ namespace MyInstagram
         private void UserItem()
         {
             messagesPanel.Controls.Clear();
-            Message[] messages = new Message[5];
-            for (int i = 0; i < 5; i++)
+            SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Messages WHERE room = {roomId}", Con.Con);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            foreach (DataRow row in dt.Rows)
             {
-                messages[i] = new Message();
-                messages[i].MessageContent = "text";
-                if (i % 2 == 0)
-                {
-                    messages[i].Margin = new Padding(79, 0, 0, 0);
-                }
+                Message mes = new Message(row["text_content"].ToString(), Convert.ToInt32(row["sender"]), Convert.ToDateTime(row["send_date"]), Convert.ToBoolean(row["checked"]));
+                if (mes.Sender == myId)
+                    mes.Margin = new Padding(79, 0, 0, 0);
                 else
                 {
-                    messages[i].roundControl1.BackColor = Color.FromArgb(31, 34, 31);
-                    messages[i].content.BackColor = Color.FromArgb(31, 34, 31);
-                    messages[i].date.BackColor = Color.FromArgb(31, 34, 31);
-                    messages[i].Margin = new Padding(5, 0, 0, 0);
+                    mes.roundControl1.BackColor = Color.FromArgb(31, 34, 31);
+                    mes.content.BackColor = Color.FromArgb(31, 34, 31);
+                    mes.date.BackColor = Color.FromArgb(31, 34, 31);
+                    mes.Margin = new Padding(5, 0, 0, 0);
                 }
-
-                messagesPanel.Controls.Add(messages[i]);
+                messagesPanel.Controls.Add(mes);
             }
         }
 
@@ -59,12 +57,12 @@ namespace MyInstagram
         {
             if (message.Texts.Length != 0)
             {
-                //string format = "HH:mm";
                 string query = $"INSERT INTO Messages(text_content, send_date, room, sender, checked) VALUES('{message.Texts}', '{DateTime.Now}', {roomId}, {myId}, {0})";
                 SqlCommand smd = new SqlCommand(query, Con.Con);
                 Con.Con.Open();
                 smd.ExecuteNonQuery();
-                MessageBox.Show("Sended!");
+                message.Texts = String.Empty;
+                UserItem();
                 Con.Con.Close();
             }
         }

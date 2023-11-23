@@ -9,6 +9,7 @@
             get { return messageContent; }
             set
             {
+                messageContent = value;
                 content.Text = value;
                 if (content.Width > 150)
                 {
@@ -28,12 +29,31 @@
             set { sender = value; }
         }
         private DateTime sendDate;
-        public DateTime SendDate { get; set; }
-        private bool idChecked;
-        public bool IdChecked { get; set; }
+        public DateTime SendDate
+        {
+            get
+            {
+                return sendDate;
+            }
+            set
+            {
+                sendDate = value;
+                date.Text = sendDate.ToString(String.Format("HH:mm"));
+            }
+        }
+        private bool isChecked;
+        public bool IsChecked { get; set; }
         public Message()
         {
             InitializeComponent();
+        }
+        public Message(string message, int sender, DateTime dt, bool check)
+        {
+            InitializeComponent();
+            MessageContent = message;
+            Sender = sender;
+            SendDate = dt;
+            IsChecked = check;
         }
     }
 }
