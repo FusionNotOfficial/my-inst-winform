@@ -27,8 +27,12 @@ CREATE TABLE Messages
 INSERT INTO Rooms(sender, reciever) VALUES(1,2)
 INSERT INTO Rooms(sender, reciever) VALUES(1,3)
 INSERT INTO Rooms(sender, reciever) VALUES(2,3)
+INSERT INTO Rooms(sender, reciever) VALUES(1,5)
 
 INSERT INTO Messages(text_content, send_date, room, sender, checked) VALUES('Hello', GETTIME(), 1, 1, 0)
+
+INSERT INTO Messages(text_content, send_date, room, sender, checked) VALUES('Hello', '2011-02-09 13:09:00' , 4, 1, 1)
+delete from messages where checked = 4
 
 SELECT * FROM Rooms INNER JOIN Users ON Rooms.reciever = Users.u_id WHERE sender = (SELECT u_id FROM Users WHERE u_username = 'admin')
 
@@ -41,8 +45,14 @@ SELECT * FROM Messages WHERE room = 1
 
 SELECT * FROM Rooms WHERE sender = 2 OR reciever = 2
 
-ALTER TABLE Messages 
-ALTER COLUMN send_date datetime
+SELECT TOP 1 text_content FROM Messages WHERE room = 3 ORDER BY m_id DESC
+SELECT COUNT(m_id) FROM Messages WHERE room = 1 AND checked = 0
+
+ALTER TABLE Users 
+ADD u_lastSeen datetime
+
+ALTER TABLE Users
+DROP COLUMN u_lastSeen;
 
 drop table messages
 drop table rooms
@@ -51,4 +61,4 @@ drop table users
 delete from messages
 
 delete from users where u_id = 5
-delete from messages
+delete from messages where room = 4

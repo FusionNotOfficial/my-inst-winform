@@ -36,7 +36,7 @@
             messagesPanel = new FlowLayoutPanel();
             LengthError = new Label();
             roomIcon = new RoundPictureBox();
-            label1 = new Label();
+            lastSeen = new Label();
             sendIcon = new PictureBox();
             sendButton = new RoundControl();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -123,16 +123,16 @@
             roomIcon.TabIndex = 9;
             roomIcon.TabStop = false;
             // 
-            // label1
+            // lastSeen
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Variable Text", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.ControlDarkDark;
-            label1.Location = new Point(79, 20);
-            label1.Name = "label1";
-            label1.Size = new Size(103, 16);
-            label1.TabIndex = 6;
-            label1.Text = "was active at 18:30";
+            lastSeen.AutoSize = true;
+            lastSeen.Font = new Font("Segoe UI Variable Text", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lastSeen.ForeColor = SystemColors.ControlDarkDark;
+            lastSeen.Location = new Point(79, 20);
+            lastSeen.Name = "lastSeen";
+            lastSeen.Size = new Size(103, 16);
+            lastSeen.TabIndex = 6;
+            lastSeen.Text = "was active at 18:30";
             // 
             // sendIcon
             // 
@@ -169,7 +169,7 @@
             Controls.Add(roomIcon);
             Controls.Add(messagesPanel);
             Controls.Add(labelLine1);
-            Controls.Add(label1);
+            Controls.Add(lastSeen);
             Controls.Add(account_name);
             Controls.Add(pictureBox1);
             Controls.Add(message);
@@ -192,7 +192,7 @@
         private LabelLine labelLine1;
         private FlowLayoutPanel messagesPanel;
         private RoundPictureBox roomIcon;
-        private Label label1;
+        private Label lastSeen;
         private PictureBox sendIcon;
         private RoundControl sendButton;
         private Label LengthError;

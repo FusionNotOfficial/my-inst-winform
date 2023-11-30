@@ -6,13 +6,14 @@ namespace MyInstagram
     internal class Room
     {
         public int Id { get; set; }
+        public int Reciever { get; set; }
         public int RoomId { get; set; }
         public Image UserImage { get; set; }
         public string Username { get; set; }
         public string LastMessage { get; set; }
         public bool IsChecked { get; set; }
         private Functions Con;
-        public Room(int userId, int roomId)
+        public Room(int userId, int roomId, int reciever)
         {
             RoomId = roomId;
             Id = userId;
@@ -29,6 +30,7 @@ namespace MyInstagram
                     Username = row["u_username"].ToString();
                 }
             }
+            Reciever = reciever;
         }
     }
 }

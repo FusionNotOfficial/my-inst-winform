@@ -24,17 +24,26 @@ namespace MyInstagram
             Sda.Fill(dt);
             return dt;
         }
-        public int SetData(string Query)
+        public void SetData(string Query)
         {
-            int Cnt = 0;
             if (Con.State == ConnectionState.Closed)
             {
                 Con.Open();
             }
             Cmd.CommandText = Query;
-            Cnt = Cmd.ExecuteNonQuery();
+            Cmd.ExecuteNonQuery();
             Con.Close();
-            return Cnt;
+        }
+        public int GetCount(int roomId, int userId)
+        {
+            if (Con.State == ConnectionState.Closed)
+            {
+                Con.Open();
+            }
+            Cmd.CommandText = $"SELECT COUNT(m_id) FROM Messages WHERE room = {roomId} AND checked = 0 AND sender != {userId}";
+            int result = (Int32)Cmd.ExecuteScalar();
+            Con.Close();
+            return result;
         }
 
     }

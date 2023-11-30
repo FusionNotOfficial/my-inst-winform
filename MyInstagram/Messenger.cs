@@ -1,5 +1,7 @@
-﻿using System.Data;
+﻿using Microsoft.VisualBasic;
+using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 
 namespace MyInstagram
 {
@@ -8,13 +10,15 @@ namespace MyInstagram
         private int myId;
         private int roomId;
         Functions Con;
-        public Messenger(int roomId, int myId)
+        public Messenger(int roomId, int myId, int recieverId)
         {
             InitializeComponent();
+
             this.myId = myId;
             this.roomId = roomId;
             Con = new Functions();
-            string query = "SELECT u_username, u_picture FROM Rooms INNER JOIN Users ON Rooms.reciever = Users.u_id WHERE r_id ='" + roomId + "'";
+            string query = $"SELECT u_username, u_picture FROM Users WHERE u_id = {recieverId}";
+           
             DataTable dt = Con.GetData(query);
             foreach (DataRow row in dt.Rows)
             {
@@ -22,7 +26,26 @@ namespace MyInstagram
                 MemoryStream ms = new MemoryStream((byte[])row["u_picture"]);
                 roomIcon.Image = Image.FromStream(ms);
             }
+            string recieverLastSeen = $"SELECT u_lastSeen FROM Users WHERE u_id = {recieverId}";
+            dt = Con.GetData(recieverLastSeen);
+            DataRow row1 = dt.Rows[0];
+            DateTime? date = (row1["u_lastSeen"] == System.DBNull.Value) ? null : ((DateTime)row1["u_lastSeen"]);
+            if(date != null)
+            {
+                DateTime now = (DateTime)date;
+                string message;
+
+                message = now > DateTime.Now.AddDays(-1) ? now.ToString("HH:mm") : now.ToString("MM/dd HH:mm");
+
+                lastSeen.Text = (message);
+            }
+
             UserItem();
+        }
+        private void UpdateLastSeen()
+        {
+            string LastSeen = $"UPDATE Users SET u_lastSeen = getdate() WHERE u_id = {myId}";
+            Con.SetData(LastSeen);
         }
 
         private void UserItem()
@@ -35,20 +58,27 @@ namespace MyInstagram
             {
                 Message mes = new Message(row["text_content"].ToString(), Convert.ToInt32(row["sender"]), Convert.ToDateTime(row["send_date"]), Convert.ToBoolean(row["checked"]));
                 if (mes.Sender == myId)
-                    mes.Margin = new Padding(79, 0, 0, 0);
+                {
+                    mes.RecalculatePosition(true);
+                    mes.viewed.Visible = true;
+                }
                 else
                 {
+                    mes.IsChecked = true;
                     mes.roundControl1.BackColor = Color.FromArgb(31, 34, 31);
                     mes.content.BackColor = Color.FromArgb(31, 34, 31);
                     mes.date.BackColor = Color.FromArgb(31, 34, 31);
-                    mes.Margin = new Padding(5, 0, 0, 0);
+                    Con.SetData($"UPDATE Messages SET checked = 1 WHERE m_id = {Convert.ToInt32(row["m_id"])}");
+                    mes.RecalculatePosition(false);
                 }
                 messagesPanel.Controls.Add(mes);
             }
+            UpdateLastSeen();
         }
 
         private void BackButton_Click(object sender, EventArgs e)
         {
+            UpdateLastSeen();
             Direct dr = new Direct();
             dr.Show();
             Close();

@@ -8,7 +8,28 @@ namespace MyInstagram
         {
             InitializeComponent();
         }
+        public int RecieverId { get; set; }
+        public int MyId { get; set; }
+        private int notificationsCount;
+        public int NotificationsCount
+        {
+            get { return notificationsCount; }
+            set
+            {
+                notificationsCount = value;
+                notification.Text = notificationsCount.ToString();
+                notification.Visible = true;
+                notificationForm.Visible = true;
+                if (notificationsCount > 9 && notificationsCount < 100)
+                    FormResize();
+                else if (notificationsCount > 99)
+                {
+                    FormResize();
+                    notification.Text = "99";
+                }
 
+            }
+        }
         private Image imageSource;
         [Category("Tools")]
         public Image ImageSource
@@ -33,14 +54,27 @@ namespace MyInstagram
         public string LastMessage
         {
             get { return lastSeenMessage; }
-            set { lastMessage.Text = value; }
-        }
-        private int roomId;
+            set
+            {
+                if (value != null)
+                    lastMessage.Text = value;
+                else
+                    lastMessage.Text = string.Empty;
+            } // сделать ... в конце
+        } // ресайз по горизонтали
+        private int roomId; // баг с датой и временем
         [Category("Tools")]
         public int RoomId
         {
             get { return roomId; }
             set { roomId = value; }
+        }
+        private void FormResize()
+        {
+            notificationForm.Size = new Size(31, 25);
+            notificationForm.Location = new Point(242, 15);
+            notificationForm.Radius = 20;
+            notification.Location = new Point(247, 17);
         }
     }
 }

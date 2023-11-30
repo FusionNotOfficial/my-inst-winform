@@ -30,8 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DirectMessage));
             picture = new RoundPictureBox();
-            lastMessage = new Label();
             username = new spLabel();
+            notificationForm = new RoundControl();
+            notification = new Label();
+            lastMessage = new spLabel();
             ((System.ComponentModel.ISupportInitialize)picture).BeginInit();
             SuspendLayout();
             // 
@@ -45,17 +47,6 @@
             picture.TabIndex = 1;
             picture.TabStop = false;
             // 
-            // lastMessage
-            // 
-            lastMessage.AutoSize = true;
-            lastMessage.Font = new Font("Trebuchet MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lastMessage.ForeColor = SystemColors.ButtonHighlight;
-            lastMessage.Location = new Point(68, 26);
-            lastMessage.Name = "lastMessage";
-            lastMessage.Size = new Size(79, 18);
-            lastMessage.TabIndex = 2;
-            lastMessage.Text = "lastMessage";
-            // 
             // username
             // 
             username.AutoSize = true;
@@ -67,23 +58,63 @@
             username.TabIndex = 3;
             username.Text = "username";
             // 
+            // notificationForm
+            // 
+            notificationForm.BackColor = Color.DarkGray;
+            notificationForm.Location = new Point(247, 15);
+            notificationForm.Name = "notificationForm";
+            notificationForm.Radius = 45;
+            notificationForm.Size = new Size(25, 25);
+            notificationForm.TabIndex = 4;
+            notificationForm.Visible = false;
+            // 
+            // notification
+            // 
+            notification.AutoSize = true;
+            notification.BackColor = Color.DarkGray;
+            notification.Font = new Font("Segoe UI Black", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            notification.ForeColor = SystemColors.Control;
+            notification.Location = new Point(252, 17);
+            notification.Name = "notification";
+            notification.Size = new Size(14, 17);
+            notification.TabIndex = 5;
+            notification.Text = "1";
+            notification.Visible = false;
+            // 
+            // lastMessage
+            // 
+            lastMessage.AutoSize = true;
+            lastMessage.Enabled = false;
+            lastMessage.Font = new Font("Trebuchet MS", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lastMessage.ForeColor = SystemColors.ButtonHighlight;
+            lastMessage.Location = new Point(68, 28);
+            lastMessage.Name = "lastMessage";
+            lastMessage.Size = new Size(54, 16);
+            lastMessage.TabIndex = 6;
+            lastMessage.Text = "spLabel1";
+            // 
             // DirectMessage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(username);
+            BackColor = Color.Black;
             Controls.Add(lastMessage);
+            Controls.Add(notification);
+            Controls.Add(username);
             Controls.Add(picture);
+            Controls.Add(notificationForm);
             Name = "DirectMessage";
-            Size = new Size(342, 56);
+            Size = new Size(279, 56);
             ((System.ComponentModel.ISupportInitialize)picture).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Label lastMessage;
         public RoundPictureBox picture;
         private spLabel username;
+        private RoundControl notificationForm;
+        private Label notification;
+        private spLabel lastMessage;
     }
 }

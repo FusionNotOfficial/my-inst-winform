@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Message));
             date = new Label();
             roundControl1 = new RoundControl();
             content = new Label();
+            viewed = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)viewed).BeginInit();
             SuspendLayout();
             // 
             // date
@@ -39,7 +42,7 @@
             date.BackColor = Color.RoyalBlue;
             date.FlatStyle = FlatStyle.System;
             date.ForeColor = SystemColors.AppWorkspace;
-            date.Location = new Point(152, 16);
+            date.Location = new Point(150, 16);
             date.Name = "date";
             date.Size = new Size(34, 15);
             date.TabIndex = 1;
@@ -51,7 +54,7 @@
             roundControl1.ForeColor = SystemColors.ControlLightLight;
             roundControl1.Location = new Point(0, 3);
             roundControl1.Name = "roundControl1";
-            roundControl1.Size = new Size(199, 32);
+            roundControl1.Size = new Size(200, 32);
             roundControl1.TabIndex = 0;
             // 
             // content
@@ -67,16 +70,30 @@
             content.TabIndex = 2;
             content.Text = "message";
             // 
+            // viewed
+            // 
+            viewed.BackColor = Color.RoyalBlue;
+            viewed.Image = (Image)resources.GetObject("viewed.Image");
+            viewed.Location = new Point(180, 16);
+            viewed.Name = "viewed";
+            viewed.Size = new Size(15, 15);
+            viewed.SizeMode = PictureBoxSizeMode.StretchImage;
+            viewed.TabIndex = 3;
+            viewed.TabStop = false;
+            viewed.Visible = false;
+            // 
             // Message
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
+            Controls.Add(viewed);
             Controls.Add(date);
             Controls.Add(content);
             Controls.Add(roundControl1);
             Name = "Message";
             Size = new Size(203, 38);
+            ((System.ComponentModel.ISupportInitialize)viewed).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -85,5 +102,6 @@
         public RoundControl roundControl1;
         public Label date;
         public Label content;
+        public PictureBox viewed;
     }
 }

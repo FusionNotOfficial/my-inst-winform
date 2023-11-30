@@ -27,9 +27,7 @@ namespace MyInstagram
         {
             flowLayoutPanel1.Controls.Clear();
 
-            SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Rooms WHERE sender = {id} OR reciever = {id}", Con.Con);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
+            DataTable dt = Con.GetData($"SELECT * FROM Rooms WHERE sender = {id} OR reciever = {id}");
             if (dt != null)
             {
                 if (dt.Rows.Count > 0)
@@ -38,9 +36,9 @@ namespace MyInstagram
                     foreach (DataRow row in dt.Rows)
                     {
                         if (id == Convert.ToInt32(row["sender"]))
-                            rooms.Add(new Room(Convert.ToInt32(row["reciever"]), Convert.ToInt32(row["r_id"])));
+                            rooms.Add(new Room(Convert.ToInt32(row["reciever"]), Convert.ToInt32(row["r_id"]), Convert.ToInt32(row["reciever"])));
                         else
-                            rooms.Add(new Room(Convert.ToInt32(row["sender"]), Convert.ToInt32(row["r_id"])));
+                            rooms.Add(new Room(Convert.ToInt32(row["sender"]), Convert.ToInt32(row["r_id"]), Convert.ToInt32(row["reciever"])));
                     }
                     DirectMessage[] directControls = new DirectMessage[rooms.Count];
                     for (int i = 0; i < 1; i++)
@@ -48,10 +46,19 @@ namespace MyInstagram
                         foreach (Room room in rooms)
                         {
                             directControls[i] = new DirectMessage();
+                            int countNotifications = Con.GetCount(room.RoomId, id);
+                            if (countNotifications > 0)
+                                directControls[i].NotificationsCount = countNotifications;
                             directControls[i].ImageSource = room.UserImage;
                             directControls[i].AccountName = room.Username;
                             directControls[i].RoomId = room.RoomId;
-                            directControls[i].LastMessage = String.Empty; // Позже реализую
+                            DataTable dt3 = Con.GetData($"SELECT TOP 1 text_content FROM Messages WHERE room = {Convert.ToInt32(room.RoomId)} ORDER BY m_id DESC");
+                            if (dt3.Rows.Count > 0)
+                                directControls[i].LastMessage = dt3.Rows[0][0].ToString();
+                            else
+                                directControls[i].LastMessage = string.Empty;
+                            directControls[i].RecieverId = room.Reciever;
+                            directControls[i].MyId = room.Id;
 
                             flowLayoutPanel1.Controls.Add(directControls[i]);
 
@@ -65,8 +72,11 @@ namespace MyInstagram
         private void button1_Click(object sender, EventArgs e)
         {
             var dialog = sender as DirectMessage;
-
-            Messenger mess = new Messenger(dialog.RoomId, id);
+            Messenger mess;
+            if(id != dialog.RecieverId)
+                mess = new Messenger(dialog.RoomId, id, dialog.RecieverId);
+            else
+                mess = new Messenger(dialog.RoomId, id, dialog.MyId);
             Close();
             mess.Show();
         }
