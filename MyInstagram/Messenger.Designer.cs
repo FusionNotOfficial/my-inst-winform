@@ -39,9 +39,11 @@
             lastSeen = new Label();
             sendIcon = new PictureBox();
             sendButton = new RoundControl();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)roomIcon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)sendIcon).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // message
@@ -79,7 +81,7 @@
             account_name.AutoSize = true;
             account_name.Font = new Font("Trebuchet MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
             account_name.ForeColor = SystemColors.ButtonHighlight;
-            account_name.Location = new Point(78, 2);
+            account_name.Location = new Point(78, 1);
             account_name.Name = "account_name";
             account_name.Size = new Size(121, 22);
             account_name.TabIndex = 6;
@@ -96,9 +98,10 @@
             // 
             // messagesPanel
             // 
-            messagesPanel.Location = new Point(1, 43);
+            messagesPanel.AutoScroll = true;
+            messagesPanel.Location = new Point(0, 4);
             messagesPanel.Name = "messagesPanel";
-            messagesPanel.Size = new Size(285, 340);
+            messagesPanel.Size = new Size(301, 340);
             messagesPanel.TabIndex = 8;
             // 
             // LengthError
@@ -157,6 +160,14 @@
             sendButton.MouseEnter += sendButton_Enter;
             sendButton.MouseLeave += sendButton_MouseLeave;
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(messagesPanel);
+            panel1.Location = new Point(1, 40);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(285, 343);
+            panel1.TabIndex = 13;
+            // 
             // Messenger
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -164,10 +175,10 @@
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(284, 431);
             Controls.Add(LengthError);
+            Controls.Add(panel1);
             Controls.Add(sendIcon);
             Controls.Add(sendButton);
             Controls.Add(roomIcon);
-            Controls.Add(messagesPanel);
             Controls.Add(labelLine1);
             Controls.Add(lastSeen);
             Controls.Add(account_name);
@@ -180,6 +191,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)roomIcon).EndInit();
             ((System.ComponentModel.ISupportInitialize)sendIcon).EndInit();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -196,5 +208,6 @@
         private PictureBox sendIcon;
         private RoundControl sendButton;
         private Label LengthError;
+        private Panel panel1;
     }
 }

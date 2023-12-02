@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
+using System.Windows.Forms;
 
 namespace MyInstagram
 {
@@ -18,7 +19,7 @@ namespace MyInstagram
             this.roomId = roomId;
             Con = new Functions();
             string query = $"SELECT u_username, u_picture FROM Users WHERE u_id = {recieverId}";
-           
+
             DataTable dt = Con.GetData(query);
             foreach (DataRow row in dt.Rows)
             {
@@ -30,7 +31,7 @@ namespace MyInstagram
             dt = Con.GetData(recieverLastSeen);
             DataRow row1 = dt.Rows[0];
             DateTime? date = (row1["u_lastSeen"] == System.DBNull.Value) ? null : ((DateTime)row1["u_lastSeen"]);
-            if(date != null)
+            if (date != null)
             {
                 DateTime now = (DateTime)date;
                 string message;
@@ -73,6 +74,7 @@ namespace MyInstagram
                 }
                 messagesPanel.Controls.Add(mes);
             }
+            messagesPanel.ScrollControlIntoView(messagesPanel.Controls[messagesPanel.Controls.Count - 1]);
             UpdateLastSeen();
         }
 

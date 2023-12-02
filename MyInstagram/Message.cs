@@ -40,10 +40,12 @@
             }
             else
             {
-                date.Location = new Point(content.Width + (extraField - viewed.Width) - extraVieved - 2, date.Location.Y);
-                viewed.Location = new Point(content.Width + extraVieved, viewed.Location.Y);
+                int horizontalDateMove = content.Height > 18 ? 31 : 2;
+                roundControl1.Width = content.Height > 18 ? roundControl1.Width - 29 : roundControl1.Width;
+                date.Location = new Point(content.Width + (extraField - viewed.Width) - extraVieved - horizontalDateMove, date.Location.Y);
                 roundControl1.Width = this.Width - viewed.Width;
                 this.Width = 200;
+                roundControl1.Width = content.Height > 18 ? roundControl1.Width - 29 : roundControl1.Width;
                 Margin = new Padding(5, 0, 0, 0);
             }
         }
