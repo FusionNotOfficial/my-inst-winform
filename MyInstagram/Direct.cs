@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
+using static TheArtOfDevHtmlRenderer.Adapters.RGraphicsPath;
 
 namespace MyInstagram
 {
@@ -40,6 +41,7 @@ namespace MyInstagram
                         else
                             rooms.Add(new Room(Convert.ToInt32(row["sender"]), Convert.ToInt32(row["r_id"]), Convert.ToInt32(row["reciever"])));
                     }
+                    rooms = rooms.OrderByDescending(o => o.LastMessageDate).ToList();
                     DirectMessage[] directControls = new DirectMessage[rooms.Count];
                     for (int i = 0; i < 1; i++)
                     {

@@ -24,6 +24,25 @@ CREATE TABLE Messages
 	room INT FOREIGN KEY REFERENCES Rooms(r_id)
 )
 
+CREATE TABLE Post
+(	
+	p_id INT PRIMARY KEY IDENTITY(1,1),
+	p_picture IMAGE,
+	p_date DATETIME,
+	p_content VARCHAR(200),
+	p_likes INT,
+	p_Comment INT FOREIGN KEY REFERENCES Comment(c_id),
+	p_user INT FOREIGN KEY REFERENCES Users(u_id)
+)
+
+CREATE TABLE Comment
+(	
+	c_id INT PRIMARY KEY IDENTITY(1,1),
+	c_content VARCHAR(50),
+	c_date DATETIME,
+	c_user INT FOREIGN KEY REFERENCES Users(u_id)
+)
+
 INSERT INTO Rooms(sender, reciever) VALUES(1,2)
 INSERT INTO Rooms(sender, reciever) VALUES(1,3)
 INSERT INTO Rooms(sender, reciever) VALUES(2,3)

@@ -82,5 +82,12 @@ namespace MyInstagram
             Close();
 
         }
+
+        private void PostButton_Click(object sender, EventArgs e)
+        {
+            CreatePost cp = new CreatePost();
+            this.Hide();
+            cp.Show();
+        }
     }
 }

@@ -43,7 +43,7 @@
             date.FlatStyle = FlatStyle.System;
             date.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             date.ForeColor = SystemColors.AppWorkspace;
-            date.Location = new Point(150, 18);
+            date.Location = new Point(149, 16);
             date.Name = "date";
             date.Size = new Size(34, 13);
             date.TabIndex = 1;
@@ -53,7 +53,7 @@
             // 
             roundControl1.BackColor = Color.RoyalBlue;
             roundControl1.ForeColor = SystemColors.ControlLightLight;
-            roundControl1.Location = new Point(0, 3);
+            roundControl1.Location = new Point(0, 1);
             roundControl1.Name = "roundControl1";
             roundControl1.Size = new Size(200, 32);
             roundControl1.TabIndex = 0;
@@ -64,8 +64,8 @@
             content.BackColor = Color.RoyalBlue;
             content.Font = new Font("Trebuchet MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             content.ForeColor = SystemColors.ButtonHighlight;
-            content.Location = new Point(4, 9);
-            content.MaximumSize = new Size(180, 150);
+            content.Location = new Point(4, 6);
+            content.MaximumSize = new Size(500, 150);
             content.Name = "content";
             content.Size = new Size(59, 18);
             content.TabIndex = 2;
@@ -75,7 +75,7 @@
             // 
             viewed.BackColor = Color.RoyalBlue;
             viewed.Image = (Image)resources.GetObject("viewed.Image");
-            viewed.Location = new Point(180, 16);
+            viewed.Location = new Point(179, 16);
             viewed.Name = "viewed";
             viewed.Size = new Size(15, 15);
             viewed.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -93,7 +93,7 @@
             Controls.Add(content);
             Controls.Add(roundControl1);
             Name = "Message";
-            Size = new Size(203, 38);
+            Size = new Size(203, 35);
             ((System.ComponentModel.ISupportInitialize)viewed).EndInit();
             ResumeLayout(false);
             PerformLayout();

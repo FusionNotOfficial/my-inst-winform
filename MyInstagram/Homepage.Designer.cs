@@ -204,7 +204,7 @@
             account_panel.Dock = DockStyle.Top;
             account_panel.Location = new Point(0, 0);
             account_panel.Name = "account_panel";
-            account_panel.Size = new Size(284, 391);
+            account_panel.Size = new Size(284, 392);
             account_panel.TabIndex = 3;
             // 
             // DescriptionLabel
@@ -236,6 +236,7 @@
             PostButton.Text = "Create Post";
             PostButton.TextColor = Color.White;
             PostButton.UseVisualStyleBackColor = false;
+            PostButton.Click += PostButton_Click;
             // 
             // editProfileButton
             // 
