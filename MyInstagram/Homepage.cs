@@ -1,11 +1,8 @@
-﻿using System.Data;
-using System.Data.SqlClient;
-
-namespace MyInstagram
+﻿namespace MyInstagram
 {
     public partial class Homepage : Form
     {
-        private int id;
+        public static int id;
         Functions Con;
         public Homepage()
         {
@@ -13,44 +10,28 @@ namespace MyInstagram
             Con = new Functions();
             account_select.BackColor = Color.Gray;
             id = Login.instanse.id;
-            UserLoad();
+            LoadForm(new MyProfile());
         }
-        private void UserLoad()
+        public void LoadForm(object Form)
         {
-            SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Users WHERE u_id = '" + id + "'", Con.Con);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            if (dt != null)
-            {
-                if (dt.Rows.Count > 0)
-                {
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        MemoryStream ms = new MemoryStream((byte[])row["u_picture"]);
-                        userImage.Image = Image.FromStream(ms);
-                        usernameLabel.Text = row["u_username"].ToString();
-                        DescriptionLabel.Text = row["u_description"].ToString();
-                    }
-                }
-            }
-            Con.Con.Close();
+            if (this.mainPanel.Controls.Count > 0)
+                this.mainPanel.Controls.RemoveAt(0);
+            Form f = (Form)Form;
+            f.TopLevel = false;
+            f.Dock = DockStyle.Fill;
+            this.mainPanel.Controls.Add(f);
+            this.mainPanel.Tag = f;
+            f.Show();
         }
-
-        private void Direct_Click(object sender, EventArgs e)
-        {
-            Direct direct = new Direct();
-            Hide();
-            direct.Show();
-        }
-
         private void account_select_Click(object sender, EventArgs e)
         {
-            account_select.BackColor = Color.Gray;
-            search_select.BackColor = Color.Black;
-            home_select.BackColor = Color.Black;
-
-            account_panel.Visible = true;
-            home_panel.Visible = false;
+            if (account_select.BackColor != Color.Gray)
+            {
+                LoadForm(new MyProfile());
+                account_select.BackColor = Color.Gray;
+                search_select.BackColor = Color.Black;
+                home_select.BackColor = Color.Black;
+            }
         }
         private void search_select_Click(object sender, EventArgs e)
         {
@@ -60,34 +41,10 @@ namespace MyInstagram
         }
         private void home_select_Click(object sender, EventArgs e)
         {
+            LoadForm(new Feed());
             home_select.BackColor = Color.Gray;
             account_select.BackColor = Color.Black;
             search_select.BackColor = Color.Black;
-        }
-
-        private void Followers_Button_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Hui");
-        }
-
-        private void Following_Button_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Hui");
-        }
-
-        private void editProfileButton_Click(object sender, EventArgs e)
-        {
-            var ep = new EditProfile();
-            ep.Show();
-            Close();
-
-        }
-
-        private void PostButton_Click(object sender, EventArgs e)
-        {
-            CreatePost cp = new CreatePost();
-            this.Hide();
-            cp.Show();
         }
     }
 }

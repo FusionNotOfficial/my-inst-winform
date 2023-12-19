@@ -1,6 +1,5 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using static TheArtOfDevHtmlRenderer.Adapters.RGraphicsPath;
 
 namespace MyInstagram
 {
@@ -75,7 +74,7 @@ namespace MyInstagram
         {
             var dialog = sender as DirectMessage;
             Messenger mess;
-            if(id != dialog.RecieverId)
+            if (id != dialog.RecieverId)
                 mess = new Messenger(dialog.RoomId, id, dialog.RecieverId);
             else
                 mess = new Messenger(dialog.RoomId, id, dialog.MyId);

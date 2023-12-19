@@ -31,7 +31,6 @@ CREATE TABLE Post
 	p_date DATETIME,
 	p_content VARCHAR(200),
 	p_likes INT,
-	p_Comment INT FOREIGN KEY REFERENCES Comment(c_id),
 	p_user INT FOREIGN KEY REFERENCES Users(u_id)
 )
 
@@ -40,7 +39,8 @@ CREATE TABLE Comment
 	c_id INT PRIMARY KEY IDENTITY(1,1),
 	c_content VARCHAR(50),
 	c_date DATETIME,
-	c_user INT FOREIGN KEY REFERENCES Users(u_id)
+	c_user INT FOREIGN KEY REFERENCES Users(u_id),
+	c_post INT FOREIGN KEY REFERENCES Post(p_id)
 )
 
 INSERT INTO Rooms(sender, reciever) VALUES(1,2)
@@ -73,11 +73,21 @@ ADD u_lastSeen datetime
 ALTER TABLE Users
 DROP COLUMN u_lastSeen;
 
-drop table messages
-drop table rooms
-drop table users
+drop table Comment
+drop table Post
 
 delete from messages
 
 delete from users where u_id = 5
-delete from messages where room = 4
+
+INSERT INTO Post(p_picture, p_date, p_content, p_likes, p_user) VALUES(null, null, 'hello', 0, 1)
+
+DELETE FROM Post
+
+SELECT p_picture, p_date FROM Post WHERE p_user = 1
+DELETE FROM POST WHERE p_id > 9
+
+DESKTOP-T96O8TL\SQLEXPRESS
+SELECT p_picture, p_date, p_content, p_likes, u_username, u_picture FROM Post INNER JOIN Users ON Post.p_user = Users.u_id WHERE p_id = 7
+SELECT p_id, p_picture, p_date, p_content, p_likes, u_username, u_picture FROM Post INNER JOIN Users ON Post.p_user = Users.u_id
+SELECT p_id FROM Post

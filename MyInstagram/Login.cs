@@ -60,10 +60,10 @@ namespace MyInstagram
                         passwordError.Visible = true;
                     }
                 }
-                catch
+                /*catch
                 {
                     MessageBox.Show("something went wrong.");
-                }
+                }*/
                 finally
                 {
                     Con.Con.Close();

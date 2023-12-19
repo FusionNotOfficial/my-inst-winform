@@ -38,4 +38,7 @@ F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\M
 F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\ref\MyInstagram.dll
 F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\bin\Debug\net7.0-windows\spLabel.cs
 F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.CreatePost.resources
-F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.PublicPost.resources
+F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.PostUserControl.resources
+F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.MyProfile.resources
+F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.Feed.resources
+F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.FeedPost.resources

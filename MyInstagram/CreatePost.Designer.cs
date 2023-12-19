@@ -35,7 +35,7 @@
             SelectedImage = new PictureBox();
             ImageLabel = new Label();
             labelLine2 = new LabelLine();
-            ulTextBox1 = new ULControls.ULTextBox();
+            description = new ULControls.ULTextBox();
             ((System.ComponentModel.ISupportInitialize)Direct).BeginInit();
             ((System.ComponentModel.ISupportInitialize)SelectedImage).BeginInit();
             SuspendLayout();
@@ -66,7 +66,7 @@
             // 
             ShareButton.AutoSize = true;
             ShareButton.Font = new Font("Microsoft YaHei UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            ShareButton.ForeColor = SystemColors.MenuHighlight;
+            ShareButton.ForeColor = SystemColors.GrayText;
             ShareButton.Location = new Point(235, 7);
             ShareButton.Name = "ShareButton";
             ShareButton.Size = new Size(47, 19);
@@ -106,23 +106,23 @@
             labelLine2.TabIndex = 9;
             labelLine2.Text = "labelLine1";
             // 
-            // ulTextBox1
+            // description
             // 
-            ulTextBox1.BackColor = SystemColors.ActiveCaptionText;
-            ulTextBox1.BorderColor = Color.DimGray;
-            ulTextBox1.BorderFocusColor = Color.DimGray;
-            ulTextBox1.BorderSize = 2;
-            ulTextBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            ulTextBox1.ForeColor = Color.Gray;
-            ulTextBox1.Location = new Point(0, 352);
-            ulTextBox1.Multiline = true;
-            ulTextBox1.Name = "ulTextBox1";
-            ulTextBox1.Padding = new Padding(7);
-            ulTextBox1.PasswordChar = false;
-            ulTextBox1.Size = new Size(284, 78);
-            ulTextBox1.TabIndex = 11;
-            ulTextBox1.Texts = "Write a caption...";
-            ulTextBox1.UnderlinedStyle = false;
+            description.BackColor = SystemColors.ActiveCaptionText;
+            description.BorderColor = Color.DimGray;
+            description.BorderFocusColor = Color.DimGray;
+            description.BorderSize = 2;
+            description.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            description.ForeColor = Color.Gainsboro;
+            description.Location = new Point(0, 352);
+            description.Multiline = true;
+            description.Name = "description";
+            description.Padding = new Padding(7);
+            description.PasswordChar = false;
+            description.Size = new Size(284, 78);
+            description.TabIndex = 11;
+            description.Texts = "Write a caption...";
+            description.UnderlinedStyle = false;
             // 
             // CreatePost
             // 
@@ -130,7 +130,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(284, 431);
-            Controls.Add(ulTextBox1);
+            Controls.Add(description);
             Controls.Add(labelLine2);
             Controls.Add(ImageLabel);
             Controls.Add(SelectedImage);
@@ -155,6 +155,6 @@
         private PictureBox SelectedImage;
         private Label ImageLabel;
         private LabelLine labelLine2;
-        private ULControls.ULTextBox ulTextBox1;
+        private ULControls.ULTextBox description;
     }
 }

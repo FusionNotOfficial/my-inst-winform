@@ -1,8 +1,5 @@
-﻿using Microsoft.VisualBasic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Data.SqlTypes;
-using System.Windows.Forms;
 
 namespace MyInstagram
 {
@@ -38,7 +35,7 @@ namespace MyInstagram
 
                 message = now > DateTime.Now.AddDays(-1) ? now.ToString("HH:mm") : now.ToString("MM/dd HH:mm");
 
-                lastSeen.Text = (message);
+                lastSeen.Text = message;
             }
 
             UserItem();
