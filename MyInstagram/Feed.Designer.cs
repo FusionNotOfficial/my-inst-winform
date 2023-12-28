@@ -41,51 +41,57 @@
             usernameLabel.AutoSize = true;
             usernameLabel.Font = new Font("Trebuchet MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             usernameLabel.ForeColor = SystemColors.ButtonFace;
-            usernameLabel.Location = new Point(17, 9);
+            usernameLabel.Location = new Point(13, 9);
+            usernameLabel.Margin = new Padding(4, 0, 4, 0);
             usernameLabel.Name = "usernameLabel";
-            usernameLabel.Size = new Size(96, 24);
+            usernameLabel.Size = new Size(149, 37);
             usernameLabel.TabIndex = 11;
             usernameLabel.Text = "username";
             // 
             // Direct
             // 
             Direct.Image = (Image)resources.GetObject("Direct.Image");
-            Direct.Location = new Point(251, 8);
+            Direct.Location = new Point(359, 13);
+            Direct.Margin = new Padding(4, 5, 4, 5);
             Direct.Name = "Direct";
-            Direct.Size = new Size(27, 27);
+            Direct.Size = new Size(39, 40);
             Direct.SizeMode = PictureBoxSizeMode.StretchImage;
             Direct.TabIndex = 12;
             Direct.TabStop = false;
+            Direct.Click += Direct_Click;
             // 
             // labelLine1
             // 
             labelLine1.BorderStyle = BorderStyle.Fixed3D;
-            labelLine1.Location = new Point(-2, 40);
+            labelLine1.Location = new Point(-3, 67);
+            labelLine1.Margin = new Padding(4, 0, 4, 0);
             labelLine1.Name = "labelLine1";
-            labelLine1.Size = new Size(290, 1);
+            labelLine1.Size = new Size(414, 2);
             labelLine1.TabIndex = 13;
             labelLine1.Text = "labelLine1";
             // 
             // FeedPanel
             // 
+            FeedPanel.AccessibleRole = AccessibleRole.None;
             FeedPanel.AutoScroll = true;
-            FeedPanel.Location = new Point(-2, 40);
+            FeedPanel.Location = new Point(-3, 67);
             FeedPanel.Margin = new Padding(0);
             FeedPanel.Name = "FeedPanel";
-            FeedPanel.Size = new Size(304, 351);
+            FeedPanel.Size = new Size(434, 585);
             FeedPanel.TabIndex = 14;
             // 
             // Feed
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
-            ClientSize = new Size(284, 392);
+            ClientSize = new Size(406, 653);
             Controls.Add(FeedPanel);
             Controls.Add(labelLine1);
             Controls.Add(Direct);
             Controls.Add(usernameLabel);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(4, 5, 4, 5);
             Name = "Feed";
             Text = "Feed";
             ((System.ComponentModel.ISupportInitialize)Direct).EndInit();
@@ -98,6 +104,6 @@
         private Label usernameLabel;
         private PictureBox Direct;
         private LabelLine labelLine1;
-        private FlowLayoutPanel FeedPanel;
+        public FlowLayoutPanel FeedPanel;
     }
 }

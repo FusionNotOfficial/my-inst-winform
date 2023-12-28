@@ -46,5 +46,7 @@
             account_select.BackColor = Color.Black;
             search_select.BackColor = Color.Black;
         }
+
+        // TO DO lower icon bug
     }
 }

@@ -10,6 +10,10 @@ namespace MyInstagram
         {
             InitializeComponent();
             Con = new Functions();
+            int followers = Con.GetCount("f_followingId", "Followers", "f_followingId", Homepage.id);
+            Followers.Text = followers.ToString();
+            int following = Con.GetCount("f_userId", "Followers", "f_userId", Homepage.id);
+            Following.Text = following.ToString();
             UserLoad();
             UserItem();
         }

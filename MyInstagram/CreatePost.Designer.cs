@@ -43,9 +43,10 @@
             // Direct
             // 
             Direct.Image = (Image)resources.GetObject("Direct.Image");
-            Direct.Location = new Point(2, 1);
+            Direct.Location = new Point(3, 2);
+            Direct.Margin = new Padding(4, 5, 4, 5);
             Direct.Name = "Direct";
-            Direct.Size = new Size(30, 30);
+            Direct.Size = new Size(43, 45);
             Direct.SizeMode = PictureBoxSizeMode.StretchImage;
             Direct.TabIndex = 1;
             Direct.TabStop = false;
@@ -56,9 +57,10 @@
             label1.AutoSize = true;
             label1.Font = new Font("Trebuchet MS", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(109, 9);
+            label1.Location = new Point(156, 15);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(64, 18);
+            label1.Size = new Size(99, 26);
             label1.TabIndex = 2;
             label1.Text = "New post";
             // 
@@ -67,18 +69,20 @@
             ShareButton.AutoSize = true;
             ShareButton.Font = new Font("Microsoft YaHei UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             ShareButton.ForeColor = SystemColors.GrayText;
-            ShareButton.Location = new Point(235, 7);
+            ShareButton.Location = new Point(327, 9);
+            ShareButton.Margin = new Padding(4, 0, 4, 0);
             ShareButton.Name = "ShareButton";
-            ShareButton.Size = new Size(47, 19);
+            ShareButton.Size = new Size(69, 27);
             ShareButton.TabIndex = 2;
             ShareButton.Text = "Share";
             ShareButton.Click += NextButton_Click;
             // 
             // SelectedImage
             // 
-            SelectedImage.Location = new Point(-2, 30);
+            SelectedImage.Location = new Point(3, 50);
+            SelectedImage.Margin = new Padding(4, 5, 4, 5);
             SelectedImage.Name = "SelectedImage";
-            SelectedImage.Size = new Size(290, 322);
+            SelectedImage.Size = new Size(414, 537);
             SelectedImage.SizeMode = PictureBoxSizeMode.Zoom;
             SelectedImage.TabIndex = 3;
             SelectedImage.TabStop = false;
@@ -90,9 +94,10 @@
             ImageLabel.BackColor = SystemColors.ActiveCaptionText;
             ImageLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             ImageLabel.ForeColor = SystemColors.ButtonHighlight;
-            ImageLabel.Location = new Point(61, 156);
+            ImageLabel.Location = new Point(83, 260);
+            ImageLabel.Margin = new Padding(4, 0, 4, 0);
             ImageLabel.Name = "ImageLabel";
-            ImageLabel.Size = new Size(160, 21);
+            ImageLabel.Size = new Size(238, 32);
             ImageLabel.TabIndex = 4;
             ImageLabel.Text = "Click to select image";
             ImageLabel.Click += SelectedImage_Click;
@@ -100,9 +105,10 @@
             // labelLine2
             // 
             labelLine2.BorderStyle = BorderStyle.Fixed3D;
-            labelLine2.Location = new Point(-2, 30);
+            labelLine2.Location = new Point(-3, 50);
+            labelLine2.Margin = new Padding(4, 0, 4, 0);
             labelLine2.Name = "labelLine2";
-            labelLine2.Size = new Size(290, 1);
+            labelLine2.Size = new Size(414, 2);
             labelLine2.TabIndex = 9;
             labelLine2.Text = "labelLine1";
             // 
@@ -114,22 +120,23 @@
             description.BorderSize = 2;
             description.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             description.ForeColor = Color.Gainsboro;
-            description.Location = new Point(0, 352);
+            description.Location = new Point(-3, 587);
+            description.Margin = new Padding(4, 5, 4, 5);
             description.Multiline = true;
             description.Name = "description";
-            description.Padding = new Padding(7);
+            description.Padding = new Padding(10, 12, 10, 12);
             description.PasswordChar = false;
-            description.Size = new Size(284, 78);
+            description.Size = new Size(414, 136);
             description.TabIndex = 11;
             description.Texts = "Write a caption...";
             description.UnderlinedStyle = false;
             // 
             // CreatePost
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
-            ClientSize = new Size(284, 431);
+            ClientSize = new Size(400, 718);
             Controls.Add(description);
             Controls.Add(labelLine2);
             Controls.Add(ImageLabel);
@@ -138,6 +145,7 @@
             Controls.Add(label1);
             Controls.Add(Direct);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(4, 5, 4, 5);
             Name = "CreatePost";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "CreatePost";

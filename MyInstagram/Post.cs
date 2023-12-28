@@ -2,7 +2,7 @@
 {
     public class Post
     {
-        public int Id { get; set; }
+        public int Id { get; private set; }
         public int UserId { get; set; }
         public Image PostImage { get; set; }
         public Image UserImage { get; set; }
@@ -10,13 +10,17 @@
         public string Content { get; set; }
         public string Username { get; set; }
         public int Likes { get; set; }
+        private Feed feed { get; set; }
+        public Feed Feed { get; set; }
+
         public Post(Image postImage, DateTime postDate)
         {
             PostImage = postImage;
             PostDate = postDate;
         }
-        public Post(Image postImage, DateTime postDate, string content, int likes, Image userImage, string username) : this(postImage, postDate)
+        public Post(int id, Image postImage, DateTime postDate, string content, int likes, Image userImage, string username) : this(postImage, postDate)
         {
+            Id = id;
             PostImage = postImage;
             PostDate = postDate;
             Content = content;
@@ -24,10 +28,10 @@
             UserImage = userImage;
             Username = username;
         }
-        public Post(int id, int userId, Image postImage, DateTime postDate, string content, int likes, Image userImage, string username) : this(postImage, postDate, content, likes, userImage, username)
+        public Post(Feed feed,int id, int userId, Image postImage, DateTime postDate, string content, int likes, Image userImage, string username) : this(id, postImage, postDate, content, likes, userImage, username)
         {
-            Id = id;
             UserId = userId;
+            Feed = feed;
         }
     }
 }

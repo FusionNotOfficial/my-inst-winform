@@ -60,15 +60,23 @@ namespace MyInstagram
                         passwordError.Visible = true;
                     }
                 }
-                /*catch
+                catch
                 {
                     MessageBox.Show("something went wrong.");
-                }*/
+                }
                 finally
                 {
                     Con.Con.Close();
                 }
             }
+        }
+
+        private void roundPictureBox2_Click(object sender, EventArgs e)
+        {
+            id = 1;
+            var hmpg = new Homepage();
+            hmpg.Show();
+            Hide();
         }
     }
 }

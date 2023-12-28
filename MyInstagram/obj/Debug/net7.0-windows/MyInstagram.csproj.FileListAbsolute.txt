@@ -42,3 +42,4 @@ F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\M
 F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.MyProfile.resources
 F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.Feed.resources
 F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.FeedPost.resources
+F:\Visual Studio\TestProjects\MyInstagram\MyInstagram\obj\Debug\net7.0-windows\MyInstagram.FollowForm.resources

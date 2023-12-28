@@ -37,19 +37,19 @@
             postImage.Location = new Point(0, 0);
             postImage.Margin = new Padding(0);
             postImage.Name = "postImage";
-            postImage.Size = new Size(90, 90);
+            postImage.Size = new Size(130, 130);
             postImage.SizeMode = PictureBoxSizeMode.StretchImage;
             postImage.TabIndex = 0;
             postImage.TabStop = false;
             // 
             // PostUserControl
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(postImage);
             Margin = new Padding(0);
             Name = "PostUserControl";
-            Size = new Size(90, 90);
+            Size = new Size(130, 130);
             ((System.ComponentModel.ISupportInitialize)postImage).EndInit();
             ResumeLayout(false);
         }
