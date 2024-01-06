@@ -1,5 +1,4 @@
 ﻿using System.Data;
-using System.Data.SqlClient;
 
 namespace MyInstagram
 {
@@ -7,6 +6,7 @@ namespace MyInstagram
     {
         private int myId;
         private int roomId;
+        private int _reciever;
         Functions Con;
         public Messenger(int roomId, int myId, int recieverId)
         {
@@ -14,6 +14,7 @@ namespace MyInstagram
 
             this.myId = myId;
             this.roomId = roomId;
+            _reciever = recieverId;
             Con = new Functions();
             string query = $"SELECT u_username, u_picture FROM Users WHERE u_id = {recieverId}";
 
@@ -24,6 +25,7 @@ namespace MyInstagram
                 MemoryStream ms = new MemoryStream((byte[])row["u_picture"]);
                 roomIcon.Image = Image.FromStream(ms);
             }
+
             string recieverLastSeen = $"SELECT u_lastSeen FROM Users WHERE u_id = {recieverId}";
             dt = Con.GetData(recieverLastSeen);
             DataRow row1 = dt.Rows[0];
@@ -49,30 +51,32 @@ namespace MyInstagram
         private void UserItem()
         {
             messagesPanel.Controls.Clear();
-            SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Messages WHERE room = {roomId}", Con.Con);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            foreach (DataRow row in dt.Rows)
+
+            DataTable dt = Con.GetData($"SELECT * FROM Messages WHERE room = {roomId}");
+            if (dt.Rows.Count > 0)
             {
-                Message mes = new Message(row["text_content"].ToString(), Convert.ToInt32(row["sender"]), Convert.ToDateTime(row["send_date"]), Convert.ToBoolean(row["checked"]));
-                if (mes.Sender == myId)
+                foreach (DataRow row in dt.Rows)
                 {
-                    mes.RecalculatePosition(true);
-                    mes.viewed.Visible = true;
+                    Message mes = new Message(row["text_content"].ToString(), Convert.ToInt32(row["sender"]), Convert.ToDateTime(row["send_date"]), Convert.ToBoolean(row["checked"]));
+                    if (mes.Sender == myId)
+                    {
+                        mes.RecalculatePosition(true);
+                        mes.viewed.Visible = true;
+                    }
+                    else
+                    {
+                        mes.IsChecked = true;
+                        mes.roundControl1.BackColor = Color.FromArgb(31, 34, 31);
+                        mes.content.BackColor = Color.FromArgb(31, 34, 31);
+                        mes.date.BackColor = Color.FromArgb(31, 34, 31);
+                        Con.SetData($"UPDATE Messages SET checked = 1 WHERE m_id = {Convert.ToInt32(row["m_id"])}");
+                        mes.RecalculatePosition(false);
+                    }
+                    messagesPanel.Controls.Add(mes);
                 }
-                else
-                {
-                    mes.IsChecked = true;
-                    mes.roundControl1.BackColor = Color.FromArgb(31, 34, 31);
-                    mes.content.BackColor = Color.FromArgb(31, 34, 31);
-                    mes.date.BackColor = Color.FromArgb(31, 34, 31);
-                    Con.SetData($"UPDATE Messages SET checked = 1 WHERE m_id = {Convert.ToInt32(row["m_id"])}");
-                    mes.RecalculatePosition(false);
-                }
-                messagesPanel.Controls.Add(mes);
+                messagesPanel.ScrollControlIntoView(messagesPanel.Controls[messagesPanel.Controls.Count - 1]);
+                UpdateLastSeen();
             }
-            messagesPanel.ScrollControlIntoView(messagesPanel.Controls[messagesPanel.Controls.Count - 1]);
-            UpdateLastSeen();
         }
 
         private void BackButton_Click(object sender, EventArgs e)
@@ -84,15 +88,11 @@ namespace MyInstagram
         }
         private void sendButton_Click(object sender, EventArgs e)
         {
-            if (message.Texts.Length != 0)
+            if (message.Texts.Length > 0)
             {
-                string query = $"INSERT INTO Messages(text_content, send_date, room, sender, checked) VALUES('{message.Texts}', '{DateTime.Now}', {roomId}, {myId}, {0})";
-                SqlCommand smd = new SqlCommand(query, Con.Con);
-                Con.Con.Open();
-                smd.ExecuteNonQuery();
+                Con.SetData($"INSERT INTO Messages(text_content, send_date, room, sender, checked) VALUES('{message.Texts}', '{DateTime.Now}', {roomId}, {myId}, {0})");
                 message.Texts = String.Empty;
                 UserItem();
-                Con.Con.Close();
             }
         }
 
@@ -124,6 +124,12 @@ namespace MyInstagram
                 sendButton.Enabled = true;
                 LengthError.Visible = false;
             }
+        }
+
+        private void roomIcon_Click(object sender, EventArgs e)
+        {
+            Homepage.instance.LoadForm(new UserAccount(_reciever, "Messenger"));
+            this.Close();
         }
     }
 }

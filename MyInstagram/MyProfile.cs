@@ -10,9 +10,9 @@ namespace MyInstagram
         {
             InitializeComponent();
             Con = new Functions();
-            int followers = Con.GetCount("f_followingId", "Followers", "f_followingId", Homepage.id);
+            int followers = Con.GetCount($"SELECT COUNT(f_followingId) FROM Followers WHERE f_followingId = {Homepage.id}");
             Followers.Text = followers.ToString();
-            int following = Con.GetCount("f_userId", "Followers", "f_userId", Homepage.id);
+            int following = Con.GetCount($"SELECT COUNT(f_userId) FROM Followers WHERE f_userId = {Homepage.id}");
             Following.Text = following.ToString();
             UserLoad();
             UserItem();
@@ -73,12 +73,12 @@ namespace MyInstagram
         }
         private void Followers_Button_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hui");
+            Homepage.instance.LoadForm(new FollowForm(true, "MyProfile", 0, Homepage.id));
         }
 
         private void Following_Button_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hui");
+            Homepage.instance.LoadForm(new FollowForm(false, "MyProfile", 0, Homepage.id));
         }
 
         private void editProfileButton_Click(object sender, EventArgs e)
@@ -86,7 +86,6 @@ namespace MyInstagram
             var ep = new EditProfile();
             ep.Show();
             Close();
-
         }
 
         private void PostButton_Click(object sender, EventArgs e)
@@ -95,6 +94,7 @@ namespace MyInstagram
             this.Hide();
             cp.Show();
         }
+
         private void Direct_Click(object sender, EventArgs e)
         {
             Direct direct = new Direct();

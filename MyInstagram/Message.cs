@@ -29,7 +29,7 @@
         {
             if (isSender)
             {
-                if(content.Width < _maxWidth)
+                if (content.Width < _maxWidth)
                 {
                     int startWidth = roundControl1.Width;
                     roundControl1.Width = content.Width + date.Width + viewed.Width + 15;
@@ -44,7 +44,7 @@
             }
             else
             {
-                if(content.Width < _maxWidth)
+                if (content.Width < _maxWidth)
                 {
                     roundControl1.Width = content.Width + date.Width + 15;
                     date.Location = new Point(content.Width + 5, date.Location.Y);

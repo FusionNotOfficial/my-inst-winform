@@ -53,8 +53,8 @@ CREATE TABLE Likes
 CREATE TABLE Followers
 (
 	f_id INT PRIMARY KEY IDENTITY(1,1),
-	f_userId INT,
-	f_followingId INT
+	f_userId INT FOREIGN KEY REFERENCES Users(u_id),
+	f_followingId INT FOREIGN KEY REFERENCES Users(u_id)
 )
 
 SELECT * FROM Followers
@@ -88,6 +88,7 @@ DROP COLUMN u_lastSeen;
 
 drop table Comment
 drop table Post
+drop table Followers
 
 delete from messages
 
@@ -104,9 +105,13 @@ DELETE FROM POST WHERE p_id > 9
 SELECT p_picture, p_date, p_content, p_likes, u_username, u_picture FROM Post INNER JOIN Users ON Post.p_user = Users.u_id WHERE p_id = 7
 SELECT p_id, p_picture, p_date, p_content, p_likes, u_username, u_picture FROM Post INNER JOIN Users ON Post.p_user = Users.u_id
 SELECT p_id FROM Post
+SELECT COUNT(f_id) FROM Followers WHERE f_followingId = 1
 
 INSERT INTO Likes(l_userId, l_postId) VALUES(1, 1)
 SELECT * FROM Post WHERE p_id = 18
 DELETE FROM Likes
+
+SELECT u_id, u_username, u_picture FROM Followers INNER JOIN Users ON Followers.f_userId = Users.u_id WHERE f_followingId = 1
+SELECT * FROM Followers
 
 UPDATE Post SET p_likes = 3 WHERE p_id = 18

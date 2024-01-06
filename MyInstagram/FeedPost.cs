@@ -1,8 +1,4 @@
-﻿using Guna.UI2.WinForms.Suite;
-using System.Data;
-using System.Data.SqlClient;
-
-namespace MyInstagram
+﻿namespace MyInstagram
 {
     public partial class FeedPost : UserControl
     {
@@ -21,7 +17,7 @@ namespace MyInstagram
             Con = new Functions();
             id = post.Id;
 
-            int amount = Con.GetCount("l_id", "Likes", "l_userId", "l_postId", Homepage.id, id);
+            int amount = Con.GetCount($"SELECT COUNT(l_id) FROM Likes WHERE l_userId = {Homepage.id} AND l_postId = {id}");
             if (amount > 0)
             {
                 isLiked = true;
@@ -29,10 +25,10 @@ namespace MyInstagram
             }
             else
                 filePath = "../heart_1.png";
-            userId= post.UserId;
+            userId = post.UserId;
             FeedRef = post.Feed;
-            amount = Con.GetCount("f_id", "Followers", "f_userId", "f_followingId", Homepage.id, userId);
-            if(amount > 0)
+            amount = Con.GetCount($"SELECT COUNT(f_id) FROM Followers WHERE f_userId = {Homepage.id} AND f_followingId = {userId}");
+            if (amount > 0)
                 SetFollowButton(true);
             else
                 SetFollowButton(false);
@@ -91,18 +87,27 @@ namespace MyInstagram
         }
         private void SetFollowButton(bool isFollow)
         {
-            if(isFollow)
+            if (isFollow)
             {
                 followButton.Text = "Following";
                 followButton.Width += horizontalAdj;
                 followButton.Location = new Point(followButton.Location.X - horizontalAdj, followButton.Location.Y);
             }
             else
+
             {
                 followButton.Text = "Follow";
                 followButton.Width -= horizontalAdj;
                 followButton.Location = new Point(followButton.Location.X + horizontalAdj, followButton.Location.Y);
             }
+        }
+
+        private void userPicture_Click(object sender, EventArgs e)
+        {
+            if (userId != Homepage.id)
+                Homepage.instance.LoadForm(new UserAccount(userId, "Post"));
+            else
+                Homepage.instance.account_select_Click(sender, e);
         }
     }
 }

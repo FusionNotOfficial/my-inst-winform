@@ -22,7 +22,6 @@ namespace MyInstagram
             UserItem();
         }
 
-
         public void UserItem()
         {
             flowLayoutPanel1.Controls.Clear();
@@ -47,7 +46,7 @@ namespace MyInstagram
                         foreach (Room room in rooms)
                         {
                             directControls[i] = new DirectMessage();
-                            int countNotifications = Con.GetCount(room.RoomId, id);
+                            int countNotifications = Con.GetCount($"SELECT COUNT(m_id) FROM Messages WHERE room = {room.RoomId} AND sender != {id} AND checked = {0}");
                             if (countNotifications > 0)
                                 directControls[i].NotificationsCount = countNotifications;
                             directControls[i].ImageSource = room.UserImage;

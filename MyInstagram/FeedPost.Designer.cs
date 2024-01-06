@@ -10,7 +10,7 @@
         /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param FollowControl="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -55,6 +55,7 @@
             userPicture.SizeMode = PictureBoxSizeMode.StretchImage;
             userPicture.TabIndex = 0;
             userPicture.TabStop = false;
+            userPicture.Click += userPicture_Click;
             // 
             // usernameLabel
             // 
@@ -67,6 +68,7 @@
             usernameLabel.Size = new Size(106, 26);
             usernameLabel.TabIndex = 12;
             usernameLabel.Text = "username";
+            usernameLabel.Click += userPicture_Click;
             // 
             // followButton
             // 

@@ -10,7 +10,7 @@
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param FollowControl="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Homepage));
             panel1 = new Panel();
+            account_select = new Panel();
+            label2 = new Label();
+            pictureBox1 = new PictureBox();
             search_select = new Panel();
             label1 = new Label();
             pictureBox3 = new PictureBox();
@@ -37,18 +40,15 @@
             home_select = new Panel();
             pictureBox2 = new PictureBox();
             panel4 = new Panel();
-            account_select = new Panel();
-            label2 = new Label();
-            pictureBox1 = new PictureBox();
             labelLine1 = new LabelLine();
             mainPanel = new Panel();
             panel1.SuspendLayout();
+            account_select.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             search_select.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             home_select.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            account_select.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -62,6 +62,40 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(400, 60);
             panel1.TabIndex = 1;
+            // 
+            // account_select
+            // 
+            account_select.Controls.Add(label2);
+            account_select.Controls.Add(pictureBox1);
+            account_select.Location = new Point(271, 0);
+            account_select.Margin = new Padding(4, 5, 4, 5);
+            account_select.Name = "account_select";
+            account_select.Size = new Size(134, 67);
+            account_select.TabIndex = 0;
+            account_select.Click += account_select_Click;
+            // 
+            // label2
+            // 
+            label2.BorderStyle = BorderStyle.Fixed3D;
+            label2.ForeColor = SystemColors.ButtonFace;
+            label2.Location = new Point(1, -2);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(1, 68);
+            label2.TabIndex = 2;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(48, 10);
+            pictureBox1.Margin = new Padding(4, 5, 4, 5);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(40, 43);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += account_select_Click;
             // 
             // search_select
             // 
@@ -138,40 +172,6 @@
             panel4.Size = new Size(134, 67);
             panel4.TabIndex = 0;
             // 
-            // account_select
-            // 
-            account_select.Controls.Add(label2);
-            account_select.Controls.Add(pictureBox1);
-            account_select.Location = new Point(271, 0);
-            account_select.Margin = new Padding(4, 5, 4, 5);
-            account_select.Name = "account_select";
-            account_select.Size = new Size(134, 67);
-            account_select.TabIndex = 0;
-            account_select.Click += account_select_Click;
-            // 
-            // label2
-            // 
-            label2.BorderStyle = BorderStyle.Fixed3D;
-            label2.ForeColor = SystemColors.ButtonFace;
-            label2.Location = new Point(1, -2);
-            label2.Margin = new Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(1, 68);
-            label2.TabIndex = 2;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(53, 10);
-            pictureBox1.Margin = new Padding(4, 5, 4, 5);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(40, 43);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += account_select_Click;
-            // 
             // labelLine1
             // 
             labelLine1.BorderStyle = BorderStyle.Fixed3D;
@@ -207,12 +207,12 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Homepage";
             panel1.ResumeLayout(false);
+            account_select.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             search_select.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             home_select.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            account_select.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 

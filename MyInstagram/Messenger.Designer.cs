@@ -10,7 +10,7 @@
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param FollowControl="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -89,6 +89,7 @@
             account_name.Size = new Size(178, 29);
             account_name.TabIndex = 6;
             account_name.Text = "account_name";
+            account_name.Click += roomIcon_Click;
             // 
             // labelLine1
             // 
@@ -132,6 +133,7 @@
             roomIcon.SizeMode = PictureBoxSizeMode.StretchImage;
             roomIcon.TabIndex = 9;
             roomIcon.TabStop = false;
+            roomIcon.Click += roomIcon_Click;
             // 
             // lastSeen
             // 

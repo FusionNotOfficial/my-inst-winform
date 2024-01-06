@@ -28,7 +28,7 @@
             UserImage = userImage;
             Username = username;
         }
-        public Post(Feed feed,int id, int userId, Image postImage, DateTime postDate, string content, int likes, Image userImage, string username) : this(id, postImage, postDate, content, likes, userImage, username)
+        public Post(Feed feed, int id, int userId, Image postImage, DateTime postDate, string content, int likes, Image userImage, string username) : this(id, postImage, postDate, content, likes, userImage, username)
         {
             UserId = userId;
             Feed = feed;

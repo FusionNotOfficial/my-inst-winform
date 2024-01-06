@@ -10,7 +10,7 @@
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param FollowControl="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -130,6 +130,5 @@
         private PictureBox messenger;
         private ULControls.ULTextBox ulTextBox1;
         private Label label1;
-        private DirectMessage directMessage1;
     }
 }

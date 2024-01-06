@@ -1,8 +1,5 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
-using System.Windows.Forms;
 
 namespace MyInstagram
 {
@@ -34,29 +31,24 @@ namespace MyInstagram
             Cmd.ExecuteNonQuery();
             Con.Close();
         }
-        public int GetCount(int roomId, int userId)
+        public int GetCount(string query)
         {
             ConCheck();
-            Cmd.CommandText = $"SELECT COUNT(m_id) FROM Messages WHERE room = {roomId} AND checked = 0 AND sender != {userId}";
+            Cmd.CommandText = query;
             int result = (Int32)Cmd.ExecuteScalar();
             Con.Close();
             return result;
         }
-        public int GetCount(string rowName, string tableName, string value1Name, string value2Name, int value1, int value2)
+        public bool Exists(string query)
         {
             ConCheck();
-            Cmd.CommandText = $"SELECT COUNT({rowName}) FROM {tableName} WHERE {value1Name} = {value1} AND {value2Name} = {value2}";
+            Cmd.CommandText = query;
             int result = (Int32)Cmd.ExecuteScalar();
             Con.Close();
-            return result;
-        }
-        public int GetCount(string rowName, string tableName, string valueName, int value)
-        {
-            ConCheck();
-            Cmd.CommandText = $"SELECT COUNT({rowName}) FROM {tableName} WHERE {valueName} = {value}";
-            int result = (Int32)Cmd.ExecuteScalar();
-            Con.Close();
-            return result;
+            if (result > 0)
+                return true;
+            else
+                return false;
         }
         private void ConCheck()
         {

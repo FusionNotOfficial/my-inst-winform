@@ -3,6 +3,7 @@
     public partial class Homepage : Form
     {
         public static int id;
+        public static Homepage instance;
         Functions Con;
         public Homepage()
         {
@@ -11,6 +12,7 @@
             account_select.BackColor = Color.Gray;
             id = Login.instanse.id;
             LoadForm(new MyProfile());
+            instance = this;
         }
         public void LoadForm(object Form)
         {
@@ -23,9 +25,9 @@
             this.mainPanel.Tag = f;
             f.Show();
         }
-        private void account_select_Click(object sender, EventArgs e)
+        public void account_select_Click(object sender, EventArgs e)
         {
-            if (account_select.BackColor != Color.Gray)
+            if (!(this.mainPanel.Controls[0] is MyProfile))
             {
                 LoadForm(new MyProfile());
                 account_select.BackColor = Color.Gray;
@@ -41,12 +43,19 @@
         }
         private void home_select_Click(object sender, EventArgs e)
         {
-            LoadForm(new Feed());
-            home_select.BackColor = Color.Gray;
-            account_select.BackColor = Color.Black;
-            search_select.BackColor = Color.Black;
+            if (!(this.mainPanel.Controls[0] is Feed))
+            {
+                LoadForm(new Feed());
+                home_select.BackColor = Color.Gray;
+                account_select.BackColor = Color.Black;
+                search_select.BackColor = Color.Black;
+            }
         }
-
-        // TO DO lower icon bug
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            string LastSeen = $"UPDATE Users SET u_lastSeen = getdate() WHERE u_id = {id}";
+            Con.SetData(LastSeen);
+        }
     }
 }

@@ -19,6 +19,9 @@
     <Compile Update="FeedPost.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="FollowControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="FollowForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +57,9 @@
     </Compile>
     <Compile Update="spLabel.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UserAccount.cs">
+      <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
 </Project>
