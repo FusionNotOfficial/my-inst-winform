@@ -187,7 +187,7 @@
             // 
             mainPanel.Dock = DockStyle.Fill;
             mainPanel.Location = new Point(0, 0);
-            mainPanel.Margin = new Padding(4, 5, 4, 5);
+            mainPanel.Margin = new Padding(0);
             mainPanel.Name = "mainPanel";
             mainPanel.Size = new Size(400, 718);
             mainPanel.TabIndex = 9;

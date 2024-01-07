@@ -1,16 +1,21 @@
-﻿namespace MyInstagram
+﻿using System.ComponentModel;
+
+namespace MyInstagram
 {
     public class spLabel : Label
     {
-        protected override void OnPaint(PaintEventArgs e)
+        [Category("Color")]
+        public Color Color { get; set; }
+        protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
         {
             if (Enabled)
             {
+                //use normal realization
                 base.OnPaint(e);
                 return;
             }
-
-            using (Brush aBrush = new SolidBrush(Color.White))
+            //custom drawing
+            using (Brush aBrush = new SolidBrush(Color))
             {
                 e.Graphics.DrawString(Text, Font, aBrush, ClientRectangle);
             }

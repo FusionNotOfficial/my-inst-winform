@@ -115,3 +115,6 @@ SELECT u_id, u_username, u_picture FROM Followers INNER JOIN Users ON Followers.
 SELECT * FROM Followers
 
 UPDATE Post SET p_likes = 3 WHERE p_id = 18
+SELECT DISTINCT u_id, u_username FROM Followers INNER JOIN Users ON Followers.f_followingId = Users.u_id WHERE u_username LIKE 'c%'
+
+SELECT u_id, u_username FROM Rooms INNER JOIN Users ON Rooms.reciever = Users.u_id WHERE u_username LIKE 'c%' AND (sender = 1 OR reciever = 1)

@@ -12,8 +12,7 @@
                 postImage.Image = value;
             }
         }
-
-
+        public int _id;
         public PostUserControl()
         {
             InitializeComponent();

@@ -3,6 +3,7 @@
     public partial class Homepage : Form
     {
         public static int id;
+        public string searchQuery;
         public static Homepage instance;
         Functions Con;
         public Homepage()
@@ -37,9 +38,14 @@
         }
         private void search_select_Click(object sender, EventArgs e)
         {
-            search_select.BackColor = Color.Gray;
-            account_select.BackColor = Color.Black;
-            home_select.BackColor = Color.Black;
+            if (!(this.mainPanel.Controls[0] is SearchForm))
+            {
+                searchQuery = "";
+                LoadForm(new SearchForm());
+                search_select.BackColor = Color.Gray;
+                account_select.BackColor = Color.Black;
+                home_select.BackColor = Color.Black;
+            }
         }
         private void home_select_Click(object sender, EventArgs e)
         {

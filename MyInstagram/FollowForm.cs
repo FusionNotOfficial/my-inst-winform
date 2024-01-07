@@ -58,8 +58,7 @@ namespace MyInstagram
                 List<Follower> followers = new List<Follower>();
                 foreach (DataRow row in dt.Rows)
                 {
-                    MemoryStream ms = new MemoryStream((byte[])row["u_picture"]);
-                    followers.Add(new Follower((int)row["u_id"], row["u_username"].ToString(), Image.FromStream(ms)));
+                    followers.Add(new Follower((int)row["u_id"], row["u_username"].ToString()));
                 }
                 followers = followers.OrderBy(o => o.Name).ToList();
                 FollowControl[] followControls = new FollowControl[followers.Count];
@@ -138,10 +137,10 @@ namespace MyInstagram
         }
         private void search_Enter(object sender, EventArgs e)
         {
-            if (search.ForeColor == Color.Black)
+            if (search.ForeColor == Color.White)
                 return;
             search.Text = "";
-            search.ForeColor = Color.Black;
+            search.ForeColor = Color.White;
         }
         private void search_Leave(object sender, EventArgs e)
         {
@@ -159,7 +158,7 @@ namespace MyInstagram
         {
             if (!_isFollow)
                 _isFollow = true;
-            UserItem($"SELECT u_id, u_username, u_picture FROM Followers INNER JOIN Users ON Followers.f_userId = Users.u_id WHERE f_followingId = {_userId}");
+            UserItem($"SELECT u_id, u_username FROM Followers INNER JOIN Users ON Followers.f_userId = Users.u_id WHERE f_followingId = {_userId}");
             followers.ForeColor = Color.White;
             following.ForeColor = Color.DarkGray;
         }
@@ -167,9 +166,27 @@ namespace MyInstagram
         {
             if (_isFollow)
                 _isFollow = false;
-            UserItem($"SELECT u_id, u_username, u_picture FROM Followers INNER JOIN Users ON Followers.f_followingId = Users.u_id WHERE f_userId = {_userId}");
+            UserItem($"SELECT u_id, u_username FROM Followers INNER JOIN Users ON Followers.f_followingId = Users.u_id WHERE f_userId = {_userId}");
             followers.ForeColor = Color.DarkGray;
             following.ForeColor = Color.White;
+        }
+
+        private void search_TextChanged(object sender, EventArgs e)
+        {
+            if (search.Text.Length > 0)
+            {
+                if (_isFollow)
+                    UserItem($"SELECT DISTINCT u_id, u_username FROM Followers INNER JOIN Users ON Followers.f_userId = Users.u_id WHERE f_followingId = {_userId} AND u_username LIKE '" + search.Text + "%'");
+                else
+                    UserItem($"SELECT DISTINCT u_id, u_username FROM Followers INNER JOIN Users ON Followers.f_followingId = Users.u_id WHERE f_userId = {_userId} AND u_username LIKE '" + search.Text + "%'");
+            }
+            else
+            {
+                if (_isFollow)
+                    UserItem($"SELECT u_id, u_username FROM Followers INNER JOIN Users ON Followers.f_userId = Users.u_id WHERE f_followingId = {_userId}");
+                else
+                    UserItem($"SELECT u_id, u_username FROM Followers INNER JOIN Users ON Followers.f_followingId = Users.u_id WHERE f_userId = {_userId}");
+            }
         }
     }
 }

@@ -61,8 +61,8 @@ namespace MyInstagram
                 else
                     lastMessage.Text = string.Empty;
             } // сделать ... в конце
-        } // ресайз по горизонтали
-        private int roomId; // баг с датой и временем
+        }
+        private int roomId;
         [Category("Tools")]
         public int RoomId
         {

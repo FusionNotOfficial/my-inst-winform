@@ -9,25 +9,28 @@
         private int likesCount;
         private bool isLiked = false;
         private string filePath;
+        private string _callback;
         Feed FeedRef;
-        public FeedPost(Post post)
+        public FeedPost(Post post, string callback)
         {
             InitializeComponent();
 
+            _callback = callback;
             Con = new Functions();
             id = post.Id;
 
-            int amount = Con.GetCount($"SELECT COUNT(l_id) FROM Likes WHERE l_userId = {Homepage.id} AND l_postId = {id}");
-            if (amount > 0)
+            if (Con.Exists($"SELECT COUNT(l_id) FROM Likes WHERE l_userId = {Homepage.id} AND l_postId = {id}"))
             {
                 isLiked = true;
                 filePath = "../heart_2.png";
             }
             else
                 filePath = "../heart_1.png";
+
             userId = post.UserId;
             FeedRef = post.Feed;
-            amount = Con.GetCount($"SELECT COUNT(f_id) FROM Followers WHERE f_userId = {Homepage.id} AND f_followingId = {userId}");
+
+            int amount = Con.GetCount($"SELECT COUNT(f_id) FROM Followers WHERE f_userId = {Homepage.id} AND f_followingId = {userId}");
             if (amount > 0)
                 SetFollowButton(true);
             else
@@ -40,9 +43,15 @@
             likesCount = post.Likes;
             if (userId == Homepage.id)
                 followButton.Visible = false;
+
+            if (userId == Homepage.id)
+                deleteButton.Visible = true;
+
             UpdateLikes();
             postDate.Text = post.PostDate.ToString("D");
             descriptionLabel.Text = post.Content;
+            descriptionLabel.Location = new Point(usernameLabel.Size.Width, descriptionLabel.Location.Y);
+            _callback = callback;
         }
 
         private void likeButton_Click(object sender, EventArgs e)
@@ -69,7 +78,6 @@
         {
             likesLabel.Text = likesCount.ToString();
         }
-
         private void followButton_Click(object sender, EventArgs e)
         {
             if (followButton.Text == "Follow")
@@ -82,7 +90,10 @@
             {
                 SetFollowButton(false);
                 Con.SetData($"DELETE FROM Followers WHERE f_userId = {Homepage.id} AND f_followingId = {userId}");
-                FeedRef.UserItem(true);
+                if(_callback != "UserAccount")
+                    FeedRef.UserItem(true);
+                //else
+
             }
         }
         private void SetFollowButton(bool isFollow)
@@ -101,13 +112,41 @@
                 followButton.Location = new Point(followButton.Location.X + horizontalAdj, followButton.Location.Y);
             }
         }
-
         private void userPicture_Click(object sender, EventArgs e)
         {
             if (userId != Homepage.id)
-                Homepage.instance.LoadForm(new UserAccount(userId, "Post"));
+            {
+                switch (_callback)
+                {
+                    case "Post":
+                        Homepage.instance.LoadForm(new UserAccount(userId, _callback));
+                        break;
+                    case "UserAccount":
+                        
+                        break;
+                    default:
+                        Homepage.instance.LoadForm(new UserAccount(userId, _callback));
+                        break;
+                }
+            }
             else
                 Homepage.instance.account_select_Click(sender, e);
+        }
+
+        private void deleteButton_Enter(object sender, EventArgs e) => label1.ForeColor = Color.White;
+
+        private void deleteButton_Leave(object sender, EventArgs e) => label1.ForeColor = SystemColors.ControlDark;
+
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Do you want to delete this post?", "Confirm", MessageBoxButtons.OKCancel);
+            if (confirmResult == DialogResult.OK)
+                Con.SetData($"DELETE FROM Post WHERE p_id = {id}");
+            if(_callback == "MyProfile")
+                UserPost.Current.UserItem();
+            else
+                FeedRef.UserItem();
         }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserAccount));
-            PostsPannel = new FlowLayoutPanel();
+            PostsPanel = new FlowLayoutPanel();
             DescriptionLabel = new Label();
             MessageButton = new ULControls.ULButton();
             followButton = new ULControls.ULButton();
@@ -50,13 +50,13 @@
             ((System.ComponentModel.ISupportInitialize)backButton).BeginInit();
             SuspendLayout();
             // 
-            // PostsPannel
+            // PostsPanel
             // 
-            PostsPannel.Location = new Point(8, 267);
-            PostsPannel.Margin = new Padding(0);
-            PostsPannel.Name = "PostsPannel";
-            PostsPannel.Size = new Size(390, 381);
-            PostsPannel.TabIndex = 26;
+            PostsPanel.Location = new Point(8, 267);
+            PostsPanel.Margin = new Padding(0);
+            PostsPanel.Name = "PostsPanel";
+            PostsPanel.Size = new Size(390, 381);
+            PostsPanel.TabIndex = 26;
             // 
             // DescriptionLabel
             // 
@@ -242,7 +242,7 @@
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(406, 653);
             Controls.Add(panel1);
-            Controls.Add(PostsPannel);
+            Controls.Add(PostsPanel);
             Controls.Add(DescriptionLabel);
             Controls.Add(MessageButton);
             Controls.Add(followButton);
@@ -265,7 +265,7 @@
 
         #endregion
 
-        private FlowLayoutPanel PostsPannel;
+        private FlowLayoutPanel PostsPanel;
         private Label DescriptionLabel;
         private ULControls.ULButton MessageButton;
         private ULControls.ULButton followButton;

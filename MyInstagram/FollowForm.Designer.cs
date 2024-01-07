@@ -105,6 +105,9 @@
             search.Size = new Size(372, 33);
             search.TabIndex = 0;
             search.Text = "Search";
+            search.TextChanged += search_TextChanged;
+            search.Enter += search_Enter;
+            search.Leave += search_Leave;
             // 
             // followers
             // 

@@ -52,6 +52,9 @@
     <Compile Update="RoundPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="SearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Sign.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +62,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="UserAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UserPost.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

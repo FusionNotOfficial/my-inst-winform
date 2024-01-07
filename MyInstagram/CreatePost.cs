@@ -35,6 +35,7 @@ namespace MyInstagram
                 Con.Con.Close();
                 hmp.Show();
                 Close();
+                MyProfile.Current.UserItem();
             }
         }
 

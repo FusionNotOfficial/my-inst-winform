@@ -1,5 +1,4 @@
 ﻿using System.Data;
-using System.Data.SqlClient;
 
 namespace MyInstagram
 {
@@ -19,9 +18,8 @@ namespace MyInstagram
             RoomId = roomId;
             Id = userId;
             Con = new Functions();
-            SqlDataAdapter adapter = new SqlDataAdapter($"SELECT u_username, u_picture FROM Users WHERE u_id = {userId}", Con.Con);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
+            DataTable dt = Con.GetData($"SELECT u_username, u_picture FROM Users WHERE u_id = {userId}");
+
             if (dt.Rows.Count > 0)
             {
                 foreach (DataRow row in dt.Rows)
@@ -31,7 +29,6 @@ namespace MyInstagram
                     Username = row["u_username"].ToString();
                 }
             }
-
             dt = Con.GetData($"SELECT TOP 1 send_date FROM Messages WHERE room = {Convert.ToInt32(roomId)} ORDER BY m_id DESC");
             foreach (DataRow row in dt.Rows)
             {

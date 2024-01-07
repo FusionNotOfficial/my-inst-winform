@@ -34,6 +34,8 @@
             // 
             // postImage
             // 
+            postImage.Dock = DockStyle.Fill;
+            postImage.Enabled = false;
             postImage.Location = new Point(0, 0);
             postImage.Margin = new Padding(0);
             postImage.Name = "postImage";
@@ -56,6 +58,6 @@
 
         #endregion
 
-        private PictureBox postImage;
+        public PictureBox postImage;
     }
 }

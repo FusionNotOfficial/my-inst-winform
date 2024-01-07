@@ -1,5 +1,4 @@
 ﻿using System.Data;
-using System.Data.SqlClient;
 
 namespace MyInstagram
 {
@@ -13,16 +12,14 @@ namespace MyInstagram
             InitializeComponent();
             Con = new Functions();
 
-            SqlDataAdapter adapter = new SqlDataAdapter("SELECT u_username FROM Users WHERE u_id = '" + id + "'", Con.Con);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
+            DataTable dt = Con.GetData($"SELECT u_username FROM Users WHERE u_id = {id}");
             DataRow row = dt.Rows[0];
             account_name.Text = row["u_username"].ToString();
 
-            UserItem();
+            UserItem(false);
         }
 
-        public void UserItem()
+        public void UserItem(bool filter)
         {
             flowLayoutPanel1.Controls.Clear();
 
@@ -40,6 +37,10 @@ namespace MyInstagram
                             rooms.Add(new Room(Convert.ToInt32(row["sender"]), Convert.ToInt32(row["r_id"]), Convert.ToInt32(row["reciever"])));
                     }
                     rooms = rooms.OrderByDescending(o => o.LastMessageDate).ToList();
+                    if (filter && search.Text.Length > 0)
+                    {
+                        rooms.RemoveAll(room => !room.Username.StartsWith(search.Text));
+                    }
                     DirectMessage[] directControls = new DirectMessage[rooms.Count];
                     for (int i = 0; i < 1; i++)
                     {
@@ -86,6 +87,32 @@ namespace MyInstagram
             var dir = new Homepage();
             dir.Show();
             Close();
+        }
+        private void Direct_Load(object sender, EventArgs e)
+        {
+            search_SetText();
+        }
+        protected void search_SetText()
+        {
+            searchLabel.Visible = true;
+        }
+        private void search_Enter(object sender, EventArgs e)
+        {
+            searchLabel.Visible = false;
+        }
+        private void search_Leave(object sender, EventArgs e)
+        {
+            search_SetText();
+        }
+        private void search_TextChanged(object sender, EventArgs e)
+        {
+            if (search.Text.Length > 0 && search.ForeColor == Color.White && searchLabel.Visible == false)
+            {
+                UserItem(true);
+                Homepage.instance.searchQuery = search.Text;
+            }
+            else
+                UserItem(false);
         }
     }
 }

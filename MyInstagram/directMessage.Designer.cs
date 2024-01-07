@@ -52,6 +52,7 @@
             // username
             // 
             username.AutoSize = true;
+            username.Color = Color.White;
             username.Enabled = false;
             username.Font = new Font("Trebuchet MS", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             username.Location = new Point(97, 8);
@@ -89,6 +90,7 @@
             // lastMessage
             // 
             lastMessage.AutoSize = true;
+            lastMessage.Color = Color.White;
             lastMessage.Enabled = false;
             lastMessage.Font = new Font("Trebuchet MS", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             lastMessage.ForeColor = SystemColors.ButtonHighlight;

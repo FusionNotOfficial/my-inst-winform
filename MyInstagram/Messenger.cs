@@ -129,7 +129,7 @@ namespace MyInstagram
         private void roomIcon_Click(object sender, EventArgs e)
         {
             Homepage.instance.LoadForm(new UserAccount(_reciever, "Messenger"));
-            this.Close();
+            this.Hide();
         }
     }
 }

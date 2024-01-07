@@ -50,7 +50,7 @@
             // 
             // PostsPannel
             // 
-            PostsPannel.Location = new Point(7, 271);
+            PostsPannel.Location = new Point(5, 271);
             PostsPannel.Margin = new Padding(0);
             PostsPannel.Name = "PostsPannel";
             PostsPannel.Size = new Size(390, 381);

@@ -39,10 +39,13 @@
             usernameDescription = new Label();
             descriptionLabel = new Label();
             postDate = new Label();
+            deleteButton = new Panel();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)userPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)postPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)likeButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            deleteButton.SuspendLayout();
             SuspendLayout();
             // 
             // userPicture
@@ -151,12 +154,12 @@
             // descriptionLabel
             // 
             descriptionLabel.AutoSize = true;
-            descriptionLabel.Font = new Font("Trebuchet MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            descriptionLabel.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             descriptionLabel.ForeColor = SystemColors.ButtonFace;
-            descriptionLabel.Location = new Point(98, 511);
+            descriptionLabel.Location = new Point(98, 508);
             descriptionLabel.Margin = new Padding(4, 0, 4, 0);
             descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.Size = new Size(166, 26);
+            descriptionLabel.Size = new Size(162, 28);
             descriptionLabel.TabIndex = 12;
             descriptionLabel.Text = "some description";
             // 
@@ -172,11 +175,35 @@
             postDate.TabIndex = 12;
             postDate.Text = "November 12";
             // 
+            // deleteButton
+            // 
+            deleteButton.Controls.Add(label1);
+            deleteButton.Location = new Point(356, 8);
+            deleteButton.Name = "deleteButton";
+            deleteButton.Size = new Size(42, 43);
+            deleteButton.TabIndex = 18;
+            deleteButton.Visible = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ControlDark;
+            label1.Location = new Point(3, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(30, 25);
+            label1.TabIndex = 0;
+            label1.Text = "...";
+            label1.Click += label1_Click;
+            label1.MouseEnter += deleteButton_Enter;
+            label1.MouseLeave += deleteButton_Leave;
+            // 
             // FeedPost
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
+            Controls.Add(deleteButton);
             Controls.Add(pictureBox2);
             Controls.Add(likeButton);
             Controls.Add(postPicture);
@@ -194,6 +221,8 @@
             ((System.ComponentModel.ISupportInitialize)postPicture).EndInit();
             ((System.ComponentModel.ISupportInitialize)likeButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            deleteButton.ResumeLayout(false);
+            deleteButton.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -202,7 +231,6 @@
 
         private RoundPictureBox userPicture;
         private Label usernameLabel;
-        private ULControls.ULButton followButton;
         private PictureBox postPicture;
         private PictureBox likeButton;
         private PictureBox pictureBox2;
@@ -210,5 +238,8 @@
         private Label usernameDescription;
         private Label descriptionLabel;
         private Label postDate;
+        public ULControls.ULButton followButton;
+        private Panel deleteButton;
+        private Label label1;
     }
 }

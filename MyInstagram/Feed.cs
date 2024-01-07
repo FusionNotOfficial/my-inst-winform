@@ -11,6 +11,7 @@ namespace MyInstagram
             InitializeComponent();
             Instance = this;
             Con = new Functions();
+            usernameLabel.Text = Con.GetString($"SELECT u_username FROM Users WHERE u_id = {Homepage.id}");
             UserItem();
         }
         public void UserItem()
@@ -40,14 +41,11 @@ namespace MyInstagram
                 FeedPost postControls;
                 foreach (Post post in posts)
                 {
-                    postControls = new FeedPost(post);
+                    postControls = new FeedPost(post, "Post");
 
                     FeedPanel.Controls.Add(postControls);
-
-                    //postControls[i].Click += new EventHandler(button1_Click);
                 }
             }
-            Con.Con.Close();
         }
         private void Direct_Click(object sender, EventArgs e)
         {

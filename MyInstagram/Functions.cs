@@ -39,6 +39,14 @@ namespace MyInstagram
             Con.Close();
             return result;
         }
+        public string GetString(string query)
+        {
+            ConCheck();
+            Cmd.CommandText = query;
+            string result = (string)Cmd.ExecuteScalar();
+            Con.Close();
+            return result;
+        }
         public bool Exists(string query)
         {
             ConCheck();

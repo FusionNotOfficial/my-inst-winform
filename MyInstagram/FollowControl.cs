@@ -12,7 +12,17 @@
             Foll = foll;
             _isFollower = isFollower;
         }
-
+        public FollowControl()
+        {
+            InitializeComponent();
+            follow.Visible = false;
+            remove.Click -= remove_Click;
+            remove.Click += remove_searchClick;
+            picture.Click -= picture_Click;
+            picture.Click += search_picture_Click;
+            account_name.Click -= search_picture_Click;
+            account_name.Click += search_picture_Click;
+        }
         private void remove_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;
@@ -42,13 +52,29 @@
             }
         }
 
+        private void remove_searchClick(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            if (button.Text == "Following")
+            {
+                button.BackColor = SystemColors.Highlight;
+                button.Text = "Follow";
+                Con.SetData($"DELETE FROM Followers WHERE f_userId = {Homepage.id} AND f_followingId = {FollowerId}");
+            }
+            else
+            {
+                button.BackColor = Color.FromArgb(64, 64, 64);
+                button.Text = "Following";
+                Con.SetData($"INSERT INTO Followers(f_userId, f_followingId) VALUES({Homepage.id}, {FollowerId})");
+            }
+        }
+
         private void follow_Click(object sender, EventArgs e)
         {
             Con.SetData($"INSERT INTO Followers(f_userId, f_followingId) VALUES({Homepage.id}, {FollowerId})");
             follow.Visible = false;
             Foll.SetFollowingText(true);
         }
-
         private void picture_Click(object sender, EventArgs e)
         {
             if (_isFollower)
@@ -56,5 +82,10 @@
             else
                 Homepage.instance.LoadForm(new UserAccount(FollowerId, "Following"));
         }
+        private void search_picture_Click(object sender, EventArgs e)
+        {
+            Homepage.instance.LoadForm(new UserAccount(FollowerId, "Search"));
+        }
+
     }
 }
