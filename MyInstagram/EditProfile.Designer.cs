@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditProfile));
             labelLine1 = new LabelLine();
             label1 = new Label();
@@ -46,6 +47,7 @@
             usernameError = new Label();
             passwordError = new Label();
             descriptionError = new Label();
+            guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             ((System.ComponentModel.ISupportInitialize)backButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)newImageRound).BeginInit();
             SuspendLayout();
@@ -284,6 +286,13 @@
             descriptionError.Text = "Description can't contain more that 40 symbols!";
             descriptionError.Visible = false;
             // 
+            // guna2BorderlessForm1
+            // 
+            guna2BorderlessForm1.BorderRadius = 50;
+            guna2BorderlessForm1.ContainerControl = this;
+            guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
             // EditProfile
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -338,5 +347,6 @@
         private Label usernameError;
         private Label passwordError;
         private Label descriptionError;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Direct));
             flowLayoutPanel1 = new FlowLayoutPanel();
             account_name = new Label();
@@ -38,6 +39,7 @@
             pictureBox1 = new PictureBox();
             search = new TextBox();
             textBox1 = new TextBox();
+            guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             ((System.ComponentModel.ISupportInitialize)messenger).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -154,6 +156,13 @@
             textBox1.Size = new Size(341, 33);
             textBox1.TabIndex = 6;
             // 
+            // guna2BorderlessForm1
+            // 
+            guna2BorderlessForm1.BorderRadius = 50;
+            guna2BorderlessForm1.ContainerControl = this;
+            guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
             // Direct
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -189,5 +198,6 @@
         private PictureBox pictureBox1;
         public TextBox search;
         public TextBox textBox1;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
     }
 }

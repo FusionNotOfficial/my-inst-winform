@@ -55,7 +55,7 @@ namespace MyInstagram
 
         private void sendPicture_Click(object sender, EventArgs e)
         {
-            if(message.Texts.Length > 0)
+            if (message.Texts.Length > 0)
             {
                 Con.SetData($"INSERT INTO Comment(c_content, c_date, c_user, c_post) VALUES('{message.Texts}', GETDATE(), {Homepage.id}, {_postId})");
                 UserItem();

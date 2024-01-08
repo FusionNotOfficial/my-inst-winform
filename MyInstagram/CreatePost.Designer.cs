@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreatePost));
             Direct = new PictureBox();
             label1 = new Label();
@@ -36,6 +37,7 @@
             ImageLabel = new Label();
             labelLine2 = new LabelLine();
             description = new ULControls.ULTextBox();
+            guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             ((System.ComponentModel.ISupportInitialize)Direct).BeginInit();
             ((System.ComponentModel.ISupportInitialize)SelectedImage).BeginInit();
             SuspendLayout();
@@ -69,7 +71,7 @@
             ShareButton.AutoSize = true;
             ShareButton.Font = new Font("Microsoft YaHei UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             ShareButton.ForeColor = SystemColors.GrayText;
-            ShareButton.Location = new Point(327, 9);
+            ShareButton.Location = new Point(318, 14);
             ShareButton.Margin = new Padding(4, 0, 4, 0);
             ShareButton.Name = "ShareButton";
             ShareButton.Size = new Size(69, 27);
@@ -131,6 +133,13 @@
             description.Texts = "Write a caption...";
             description.UnderlinedStyle = false;
             // 
+            // guna2BorderlessForm1
+            // 
+            guna2BorderlessForm1.BorderRadius = 50;
+            guna2BorderlessForm1.ContainerControl = this;
+            guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
             // CreatePost
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -164,5 +173,6 @@
         private Label ImageLabel;
         private LabelLine labelLine2;
         private ULControls.ULTextBox description;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
     }
 }

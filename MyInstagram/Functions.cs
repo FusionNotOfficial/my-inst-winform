@@ -61,9 +61,7 @@ namespace MyInstagram
         private void ConCheck()
         {
             if (Con.State == ConnectionState.Closed)
-            {
                 Con.Open();
-            }
         }
     }
 }

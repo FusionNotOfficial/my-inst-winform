@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CommentForm));
             backButton = new PictureBox();
             label1 = new Label();
@@ -36,6 +37,7 @@
             userIcon = new RoundPictureBox();
             sendIcon = new PictureBox();
             sendButton = new RoundControl();
+            guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             ((System.ComponentModel.ISupportInitialize)backButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)userIcon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)sendIcon).BeginInit();
@@ -128,6 +130,13 @@
             sendButton.MouseEnter += sendButton_Enter;
             sendButton.MouseLeave += sendButton_MouseLeave;
             // 
+            // guna2BorderlessForm1
+            // 
+            guna2BorderlessForm1.BorderRadius = 50;
+            guna2BorderlessForm1.ContainerControl = this;
+            guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
             // CommentForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -161,5 +170,6 @@
         private RoundPictureBox userIcon;
         private PictureBox sendIcon;
         private RoundControl sendButton;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
     }
 }

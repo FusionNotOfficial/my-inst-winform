@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             label1 = new Label();
             usernameText = new ULControls.ULTextBox();
             label2 = new Label();
@@ -43,6 +44,7 @@
             conpassError = new Label();
             emailError = new Label();
             usernameError = new Label();
+            guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             SuspendLayout();
             // 
             // label1
@@ -172,7 +174,7 @@
             CreateBtn.BackColor = Color.MediumSlateBlue;
             CreateBtn.BackgroundColor = Color.MediumSlateBlue;
             CreateBtn.BorderColor = Color.PaleVioletRed;
-            CreateBtn.BorderRadius = 50;
+            CreateBtn.BorderRadius = 40;
             CreateBtn.BorderSize = 0;
             CreateBtn.FlatAppearance.BorderSize = 0;
             CreateBtn.FlatStyle = FlatStyle.Flat;
@@ -244,6 +246,13 @@
             usernameError.TabIndex = 6;
             usernameError.Visible = false;
             // 
+            // guna2BorderlessForm1
+            // 
+            guna2BorderlessForm1.BorderRadius = 50;
+            guna2BorderlessForm1.ContainerControl = this;
+            guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
             // Sign
             // 
             AutoScaleDimensions = new SizeF(15F, 29F);
@@ -292,5 +301,6 @@
         private Label conpassError;
         private Label emailError;
         private Label usernameError;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
     }
 }

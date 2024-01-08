@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             label1 = new Label();
             label2 = new Label();
@@ -43,6 +44,7 @@
             roundPictureBox2 = new RoundPictureBox();
             roundPictureBox3 = new RoundPictureBox();
             roundPictureBox4 = new RoundPictureBox();
+            guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             ((System.ComponentModel.ISupportInitialize)roundPictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)roundPictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)roundPictureBox3).BeginInit();
@@ -160,6 +162,13 @@
             roundPictureBox4.Name = "roundPictureBox4";
             roundPictureBox4.TabStop = false;
             // 
+            // guna2BorderlessForm1
+            // 
+            guna2BorderlessForm1.BorderRadius = 50;
+            guna2BorderlessForm1.ContainerControl = this;
+            guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
             // Login
             // 
             resources.ApplyResources(this, "$this");
@@ -203,5 +212,6 @@
         private RoundPictureBox roundPictureBox2;
         private RoundPictureBox roundPictureBox3;
         private RoundPictureBox roundPictureBox4;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
     }
 }

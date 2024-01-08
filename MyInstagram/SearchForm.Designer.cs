@@ -44,7 +44,7 @@
             panel1.Controls.Add(searchLabel);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(search);
-            panel1.Location = new Point(10, 12);
+            panel1.Location = new Point(12, 27);
             panel1.Name = "panel1";
             panel1.Size = new Size(382, 51);
             panel1.TabIndex = 10;
@@ -92,10 +92,10 @@
             // 
             AccountsPanel.AutoScroll = true;
             AccountsPanel.BackColor = SystemColors.ActiveCaptionText;
-            AccountsPanel.Location = new Point(0, 71);
+            AccountsPanel.Location = new Point(0, 86);
             AccountsPanel.Margin = new Padding(4, 5, 4, 5);
             AccountsPanel.Name = "AccountsPanel";
-            AccountsPanel.Size = new Size(433, 619);
+            AccountsPanel.Size = new Size(433, 604);
             AccountsPanel.TabIndex = 8;
             // 
             // SearchForm

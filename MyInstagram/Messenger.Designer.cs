@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Messenger));
             message = new ULControls.ULTextBox();
             pictureBox1 = new PictureBox();
@@ -40,6 +41,8 @@
             sendIcon = new PictureBox();
             sendButton = new RoundControl();
             panel1 = new Panel();
+            guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
+            labelLine2 = new LabelLine();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)roomIcon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)sendIcon).BeginInit();
@@ -175,12 +178,28 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(labelLine2);
             panel1.Controls.Add(messagesPanel);
             panel1.Location = new Point(1, 62);
             panel1.Margin = new Padding(4, 5, 4, 5);
             panel1.Name = "panel1";
             panel1.Size = new Size(407, 577);
             panel1.TabIndex = 13;
+            // 
+            // guna2BorderlessForm1
+            // 
+            guna2BorderlessForm1.BorderRadius = 50;
+            guna2BorderlessForm1.ContainerControl = this;
+            guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
+            // labelLine2
+            // 
+            labelLine2.Location = new Point(0, 0);
+            labelLine2.Name = "labelLine2";
+            labelLine2.Size = new Size(400, 1);
+            labelLine2.TabIndex = 14;
+            labelLine2.Text = "labelLine2";
             // 
             // Messenger
             // 
@@ -224,5 +243,7 @@
         private RoundControl sendButton;
         private Label LengthError;
         private Panel panel1;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
+        private LabelLine labelLine2;
     }
 }

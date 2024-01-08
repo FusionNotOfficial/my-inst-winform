@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Homepage));
             panel1 = new Panel();
             account_select = new Panel();
@@ -42,6 +43,7 @@
             panel4 = new Panel();
             labelLine1 = new LabelLine();
             mainPanel = new Panel();
+            guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             panel1.SuspendLayout();
             account_select.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -192,6 +194,13 @@
             mainPanel.Size = new Size(400, 718);
             mainPanel.TabIndex = 9;
             // 
+            // guna2BorderlessForm1
+            // 
+            guna2BorderlessForm1.BorderRadius = 50;
+            guna2BorderlessForm1.ContainerControl = this;
+            guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
             // Homepage
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -230,5 +239,6 @@
         private Label label2;
         private LabelLine labelLine1;
         private Panel mainPanel;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
     }
 }
