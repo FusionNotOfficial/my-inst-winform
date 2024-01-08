@@ -34,7 +34,7 @@
             followButton = new ULControls.ULButton();
             postPicture = new PictureBox();
             likeButton = new PictureBox();
-            pictureBox2 = new PictureBox();
+            comment = new PictureBox();
             likesLabel = new Label();
             usernameDescription = new Label();
             descriptionLabel = new Label();
@@ -44,7 +44,7 @@
             ((System.ComponentModel.ISupportInitialize)userPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)postPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)likeButton).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)comment).BeginInit();
             deleteButton.SuspendLayout();
             SuspendLayout();
             // 
@@ -116,16 +116,17 @@
             likeButton.TabStop = false;
             likeButton.Click += likeButton_Click;
             // 
-            // pictureBox2
+            // comment
             // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(82, 473);
-            pictureBox2.Margin = new Padding(4, 5, 4, 5);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(34, 34);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 17;
-            pictureBox2.TabStop = false;
+            comment.Image = (Image)resources.GetObject("comment.Image");
+            comment.Location = new Point(82, 473);
+            comment.Margin = new Padding(4, 5, 4, 5);
+            comment.Name = "comment";
+            comment.Size = new Size(34, 34);
+            comment.SizeMode = PictureBoxSizeMode.StretchImage;
+            comment.TabIndex = 17;
+            comment.TabStop = false;
+            comment.Click += comment_Click;
             // 
             // likesLabel
             // 
@@ -204,7 +205,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             Controls.Add(deleteButton);
-            Controls.Add(pictureBox2);
+            Controls.Add(comment);
             Controls.Add(likeButton);
             Controls.Add(postPicture);
             Controls.Add(followButton);
@@ -220,7 +221,7 @@
             ((System.ComponentModel.ISupportInitialize)userPicture).EndInit();
             ((System.ComponentModel.ISupportInitialize)postPicture).EndInit();
             ((System.ComponentModel.ISupportInitialize)likeButton).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)comment).EndInit();
             deleteButton.ResumeLayout(false);
             deleteButton.PerformLayout();
             ResumeLayout(false);
@@ -233,7 +234,7 @@
         private Label usernameLabel;
         private PictureBox postPicture;
         private PictureBox likeButton;
-        private PictureBox pictureBox2;
+        private PictureBox comment;
         private Label likesLabel;
         private Label usernameDescription;
         private Label descriptionLabel;

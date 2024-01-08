@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices;
-
-namespace MyInstagram
+﻿namespace MyInstagram
 {
     public class Post
     {
@@ -12,7 +10,7 @@ namespace MyInstagram
         public string Content { get; set; }
         public string Username { get; set; }
         public int Likes { get; set; }
-        public Feed Feed { get; set; }
+        public Feed? Feed { get; set; }
 
         public Post(Image postImage, DateTime postDate)
         {
@@ -40,7 +38,7 @@ namespace MyInstagram
             UserImage = userImage;
             Username = username;
         }
-        public Post(Feed feed, int id, int userId, Image postImage, DateTime postDate, string content, int likes, Image userImage, string username) : this(id, postImage, postDate, content, likes, userImage, username)
+        public Post(Feed? feed, int id, int userId, Image postImage, DateTime postDate, string content, int likes, Image userImage, string username) : this(id, postImage, postDate, content, likes, userImage, username)
         {
             UserId = userId;
             Feed = feed;

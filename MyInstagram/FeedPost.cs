@@ -3,6 +3,8 @@
     public partial class FeedPost : UserControl
     {
         Functions Con;
+        Feed FeedRef;
+
         private int id;
         private int userId;
         private readonly int horizontalAdj = 10;
@@ -10,7 +12,7 @@
         private bool isLiked = false;
         private string filePath;
         private string _callback;
-        Feed FeedRef;
+
         public FeedPost(Post post, string callback)
         {
             InitializeComponent();
@@ -90,9 +92,8 @@
             {
                 SetFollowButton(false);
                 Con.SetData($"DELETE FROM Followers WHERE f_userId = {Homepage.id} AND f_followingId = {userId}");
-                if(_callback != "UserAccount")
+                if (_callback != "UserAccount")
                     FeedRef.UserItem(true);
-                //else
 
             }
         }
@@ -122,7 +123,7 @@
                         Homepage.instance.LoadForm(new UserAccount(userId, _callback));
                         break;
                     case "UserAccount":
-                        
+
                         break;
                     default:
                         Homepage.instance.LoadForm(new UserAccount(userId, _callback));
@@ -143,10 +144,16 @@
             var confirmResult = MessageBox.Show("Do you want to delete this post?", "Confirm", MessageBoxButtons.OKCancel);
             if (confirmResult == DialogResult.OK)
                 Con.SetData($"DELETE FROM Post WHERE p_id = {id}");
-            if(_callback == "MyProfile")
+            if (_callback == "MyProfile")
                 UserPost.Current.UserItem();
             else
                 FeedRef.UserItem();
+        }
+
+        private void comment_Click(object sender, EventArgs e)
+        {
+            CommentForm comment = new CommentForm(id);
+            comment.Show();
         }
     }
 }

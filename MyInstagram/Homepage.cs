@@ -5,6 +5,7 @@
         public static int id;
         public string searchQuery;
         public static Homepage instance;
+        public static int scrollValue = 0;
         Functions Con;
         public Homepage()
         {

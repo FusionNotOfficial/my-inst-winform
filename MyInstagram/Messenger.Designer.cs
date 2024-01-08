@@ -69,10 +69,10 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(1, 0);
+            pictureBox1.Location = new Point(1, 4);
             pictureBox1.Margin = new Padding(4, 5, 4, 5);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(50, 57);
+            pictureBox1.Size = new Size(50, 52);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
@@ -152,7 +152,7 @@
             sendIcon.BackColor = Color.CornflowerBlue;
             sendIcon.Enabled = false;
             sendIcon.Image = (Image)resources.GetObject("sendIcon.Image");
-            sendIcon.Location = new Point(336, 650);
+            sendIcon.Location = new Point(337, 651);
             sendIcon.Margin = new Padding(4, 5, 4, 5);
             sendIcon.Name = "sendIcon";
             sendIcon.Size = new Size(37, 45);

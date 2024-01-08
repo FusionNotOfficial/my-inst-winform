@@ -10,11 +10,9 @@ namespace MyInstagram
         {
             if (Enabled)
             {
-                //use normal realization
                 base.OnPaint(e);
                 return;
             }
-            //custom drawing
             using (Brush aBrush = new SolidBrush(Color))
             {
                 e.Graphics.DrawString(Text, Font, aBrush, ClientRectangle);

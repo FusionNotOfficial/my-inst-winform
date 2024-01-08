@@ -24,51 +24,47 @@ namespace MyInstagram
             flowLayoutPanel1.Controls.Clear();
 
             DataTable dt = Con.GetData($"SELECT * FROM Rooms WHERE sender = {id} OR reciever = {id}");
-            if (dt != null)
+            if (dt.Rows.Count > 0)
             {
-                if (dt.Rows.Count > 0)
+                List<Room> rooms = new List<Room>();
+                foreach (DataRow row in dt.Rows)
                 {
-                    List<Room> rooms = new List<Room>();
-                    foreach (DataRow row in dt.Rows)
+                    if (id == Convert.ToInt32(row["sender"]))
+                        rooms.Add(new Room(Convert.ToInt32(row["reciever"]), Convert.ToInt32(row["r_id"]), Convert.ToInt32(row["reciever"])));
+                    else
+                        rooms.Add(new Room(Convert.ToInt32(row["sender"]), Convert.ToInt32(row["r_id"]), Convert.ToInt32(row["reciever"])));
+                }
+                rooms = rooms.OrderByDescending(o => o.LastMessageDate).ToList();
+                if (filter && search.Text.Length > 0)
+                {
+                    rooms.RemoveAll(room => !room.Username.StartsWith(search.Text));
+                }
+                DirectMessage[] directControls = new DirectMessage[rooms.Count];
+                for (int i = 0; i < 1; i++)
+                {
+                    foreach (Room room in rooms)
                     {
-                        if (id == Convert.ToInt32(row["sender"]))
-                            rooms.Add(new Room(Convert.ToInt32(row["reciever"]), Convert.ToInt32(row["r_id"]), Convert.ToInt32(row["reciever"])));
+                        directControls[i] = new DirectMessage();
+                        int countNotifications = Con.GetCount($"SELECT COUNT(m_id) FROM Messages WHERE room = {room.RoomId} AND sender != {id} AND checked = {0}");
+                        if (countNotifications > 0)
+                            directControls[i].NotificationsCount = countNotifications;
+                        directControls[i].ImageSource = room.UserImage;
+                        directControls[i].AccountName = room.Username;
+                        directControls[i].RoomId = room.RoomId;
+                        DataTable dt3 = Con.GetData($"SELECT TOP 1 text_content FROM Messages WHERE room = {Convert.ToInt32(room.RoomId)} ORDER BY m_id DESC");
+                        if (dt3.Rows.Count > 0)
+                            directControls[i].LastMessage = dt3.Rows[0][0].ToString();
                         else
-                            rooms.Add(new Room(Convert.ToInt32(row["sender"]), Convert.ToInt32(row["r_id"]), Convert.ToInt32(row["reciever"])));
-                    }
-                    rooms = rooms.OrderByDescending(o => o.LastMessageDate).ToList();
-                    if (filter && search.Text.Length > 0)
-                    {
-                        rooms.RemoveAll(room => !room.Username.StartsWith(search.Text));
-                    }
-                    DirectMessage[] directControls = new DirectMessage[rooms.Count];
-                    for (int i = 0; i < 1; i++)
-                    {
-                        foreach (Room room in rooms)
-                        {
-                            directControls[i] = new DirectMessage();
-                            int countNotifications = Con.GetCount($"SELECT COUNT(m_id) FROM Messages WHERE room = {room.RoomId} AND sender != {id} AND checked = {0}");
-                            if (countNotifications > 0)
-                                directControls[i].NotificationsCount = countNotifications;
-                            directControls[i].ImageSource = room.UserImage;
-                            directControls[i].AccountName = room.Username;
-                            directControls[i].RoomId = room.RoomId;
-                            DataTable dt3 = Con.GetData($"SELECT TOP 1 text_content FROM Messages WHERE room = {Convert.ToInt32(room.RoomId)} ORDER BY m_id DESC");
-                            if (dt3.Rows.Count > 0)
-                                directControls[i].LastMessage = dt3.Rows[0][0].ToString();
-                            else
-                                directControls[i].LastMessage = string.Empty;
-                            directControls[i].RecieverId = room.Reciever;
-                            directControls[i].MyId = room.Id;
+                            directControls[i].LastMessage = string.Empty;
+                        directControls[i].RecieverId = room.Reciever;
+                        directControls[i].MyId = room.Id;
 
-                            flowLayoutPanel1.Controls.Add(directControls[i]);
+                        flowLayoutPanel1.Controls.Add(directControls[i]);
 
-                            directControls[i].Click += new EventHandler(button1_Click);
-                        }
+                        directControls[i].Click += new EventHandler(button1_Click);
                     }
                 }
             }
-            Con.Con.Close();
         }
         private void button1_Click(object sender, EventArgs e)
         {

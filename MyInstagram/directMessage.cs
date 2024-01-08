@@ -42,11 +42,9 @@ namespace MyInstagram
                 picture.SizeMode = PictureBoxSizeMode.StretchImage;
             }
         }
-        private string accountName;
         [Category("Tools")]
         public string AccountName
         {
-            get { return accountName; }
             set { username.Text = value; }
         }
         private string lastSeenMessage;

@@ -5,7 +5,7 @@ namespace MyInstagram
     public partial class Feed : Form
     {
         Functions Con;
-        static Feed Instance;
+        static Feed? Instance;
         public Feed()
         {
             InitializeComponent();
